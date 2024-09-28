@@ -8,32 +8,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h4>SellInsert Query</h4>
-이름 
-<input type="text" id="userName">
-아이디
-<input type="text" id="userId">
-<input type="text" id="id" placeholder="Enter ID">
-<input type="button" value="조회하기" id="queryButton">
-<p>Result: <span id="result"></span></p>
-<table>
-    <tr>
-        <td>선수명</td>
-        <td>일자</td>
-        <td>회차</td>
-        <td>시행처</td>
-    </tr>
-</table>
+    <h4>SellInsert</h4>
+
 
     <script>
         $(document).ready(function() {
             $('#queryButton').click(function() {
-                var id = $('#id').val();
-                id=100;
+                var paramMap = {
+                    user_name : $('#userName').val(),
+                    race_no : $('#raceNo').val(),
+                    win_type : $('#winType').val(),
+                    runner_no : $('#runnerNo').val(),
+                    bet_amt : $('#betAmt').val()
+                };
                 $.ajax({
                     url: '/sellInsert/getSellInsert',
-                    type: 'GET',
-                    data: { id: id },
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(paramMap),
                     success: function(result) {
                     	var htmlcont = "";
                     	
@@ -46,5 +38,37 @@
             });
         });
     </script>
+
+    이름
+    <input type="text" id="userName">
+    아이디
+    <input type="text" id="userId">
+    <input type="text" id="id" placeholder="Enter ID">
+    <p>Result: <span id="result"></span></p>
+    <table>
+        <tr>
+            <td>고객명</td>
+            <td><input type="text" id="userName"></td>
+        </tr>
+        <tr>
+            <td>경주번호</td>
+            <td><input type="text" id="raceNo"></td>
+        </tr>
+        <tr>
+            <td>승식</td>
+            <td><input type="text" id="winType"></td>
+        </tr>
+        <tr>
+            <td>선수선택</td>
+            <td><input type="text" id="runnerNo"></td>
+        </tr>
+        <tr>
+            <td>배팅금액</td>
+            <td><input type="text" id="betAmt"></td>
+        </tr>
+    </table>
+
+    <input type="button" value="입력하기" id="queryButton">
+
 </body>
 </html>

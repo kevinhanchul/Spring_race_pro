@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.SellInsertMapper">
-    <select id="selSellInsert" parameterType="long" resultType="map">
+    <insert id="selSellInsert" parameterType="map">
         select
 			runner_name,
 			RACE_DY,
@@ -12,5 +12,5 @@
 			MEET_NO
 		from t_race_info
 		LIMIT 0,1
-    </select>
+    </insert>
 </mapper>
