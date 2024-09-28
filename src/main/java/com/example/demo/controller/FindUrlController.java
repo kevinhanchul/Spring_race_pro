@@ -16,6 +16,14 @@ public class FindUrlController {
         return mav;
     }
     
+    @GetMapping("/loginPage")
+    private ModelAndView loginPage() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("loginPage");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+    
     @GetMapping("/raceInfo")
     private ModelAndView raceInfo() {
         ModelAndView mav = new ModelAndView();
@@ -80,6 +88,14 @@ public class FindUrlController {
         return mav;
     }
 
+    @GetMapping("/fepInfo")
+    private ModelAndView fepInfo() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("fepInfo");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+    
     @GetMapping("/userInsert")
     private ModelAndView userInsert() {
         ModelAndView mav = new ModelAndView();
@@ -87,8 +103,22 @@ public class FindUrlController {
         mav.addObject("message", "Hello, abc.html!");
         return mav;
     }
-
-
+    
+    @GetMapping("/winnerInsert")
+    private ModelAndView winnerInsert() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("winnerInsert");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+    
+    @GetMapping("/sellInsert")
+    private ModelAndView sellInsert() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("sellInsert");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
     
     @PostMapping("/add2")
     public Map<String, Integer> addNumbers(@RequestBody Map<String, String> numbers) throws Exception {

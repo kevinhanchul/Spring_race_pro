@@ -11,7 +11,7 @@
 			CHECK_SCORE,
 			INPUT_DY
 		FROM T_SELF_CHECK
-		where USER_NAME = ${userInfo}
+		<!--where USER_NAME = ${userInfo}-->
 		LIMIT 0,1
     </select>
 </mapper>

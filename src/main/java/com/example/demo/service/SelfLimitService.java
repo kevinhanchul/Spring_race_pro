@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.mapper.SelfLimitMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -14,8 +15,7 @@ public class SelfLimitService {
         this.selfLimitMapper = selfLimitMapper;
     }
 
-    public Map<String, Object> getSelfLimit(Long id) {
-    	//Map<String, Object> selfLimit_info = selfLimitMapper.selSelfLimit(id);
-        return selfLimitMapper.selSelfLimit(id);
+    public List<Map<String, Object>> getSelfLimit(Map<String, Object> paramMap) {
+        return selfLimitMapper.selSelfLimit(paramMap);
     }
 }

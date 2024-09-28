@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UserInfo Query</title>
+    <title>SelfLimit Query</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
@@ -16,24 +16,32 @@ table, tr, td, th{
 <script>
     $(document).ready(function() {
         $('#queryButton').click(function() {
-            var id = $('#id').val();
-            id = 1000;
+            //var id = $('#id').val();
+            var paramMap = {
+                user_name : $('#userName').val()
+			};
             $.ajax({
-                url: '/userInfo/getUserInfo',
-                type: 'GET',
-                data: { id: id },
+                url: '/selfLimit/getSelfLimit',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(paramMap),
+                //data: { id : id },
                 success: function(result) {
                 	var htmlcont="";
-                	htmlcont+="<tr>";
-               		htmlcont+="<td>"+ result.USER_RESULT.USER_NAME + "</td>";
-           			htmlcont+="<td>"+ result.USER_RESULT.USER_ID + "</td>";
-       				htmlcont+="<td>"+ result.USER_RESULT.USER_PW + "</td>";
-   					htmlcont+="<td>"+ result.USER_RESULT.USER_EMAIL + "</td>";
-   					htmlcont+="</tr>";
+                	result.forEach(function(item) {
+	                	htmlcont+="<tr>";
+	               		htmlcont+="<td>"+ item.user_name + "</td>";
+	           			htmlcont+="<td>"+ item.st_dy + "</td>";
+	       				htmlcont+="<td>"+ item.ed_dy + "</td>";
+	   					htmlcont+="<td>"+ item.day_limit_amt + "</td>";
+	   					htmlcont+="<td>"+ item.mon_limit_amt + "</td>";
+	   					htmlcont+="<td>"+ item.year_limit_amt + "</td>";
+	   					htmlcont+="</tr>";
+                	});
                     $('#result_val').html(htmlcont);
                 },
                 error: function() {
-                    $('#result_val').html('Error retrieving data');
+                    $('#result_val').html('<tr><td colspan="6">No data found</td></tr>');
                 }
             });
         });
@@ -41,9 +49,10 @@ table, tr, td, th{
 </script>
 
 <body>
-    <h4>UserInfo Query</h4>
+<form id="addForm">
+    <h4>SelfLimit Query</h4>
 이름 
-<input type="text" id="userName">
+<input type="text" id="userName" value="'홍길동'">
 아이디
 <input type="text" id="userId">
 <input type="text" id="id" placeholder="Enter ID">
@@ -51,22 +60,26 @@ table, tr, td, th{
 
 <table style="width:850px">
 	<colgroup>
-		<col style="width:25%" />
-		<col style="width:25%" />
-		<col style="width:25%" />
+		<col style="width:10%" />
+		<col style="width:23%" />
+		<col style="width:23%" />
+		<col style="width:13%" />
+		<col style="width:13%" />
 		<col />
 	</colgroup>
     <thead>
     	<tr>
-	        <th>이름</th>
-	        <th>아이디</th>
-	        <th>패스워드</th>
-	        <th>이메일주소</th>
+	        <th>고객명</th>
+	        <th>기간(시작일)</th>
+	        <th>기간(종료일)</th>
+	        <th>일일제한금액</th>
+			<th>주일제한금액</th>
+			<th>달제한금액</th>
         </tr>
     </thead>	
     <tbody id="result_val"></tbody>      
 </table>
-
+</form>
 </body>
 </html>
 

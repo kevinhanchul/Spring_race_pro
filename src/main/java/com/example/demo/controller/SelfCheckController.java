@@ -19,7 +19,8 @@ public class SelfCheckController {
     }
 
     @GetMapping("/getSelfCheck")
-    public Map<String, Object> getSelfCheck(@RequestParam Map<String, Object> paramMap) {
-        return selfCheckService.getSelfCheck(paramMap);
-    }    
+    public Map<String, Object> getSelfCheck(@RequestParam String userInfo) {
+        return selfCheckService.getSelfCheck(userInfo);
+    }
+
 }

@@ -61,6 +61,45 @@ CREATE TABLE t_sell(
     ret_amt int/*환불금액  */
 );
 
+INSERT INTO t_sell (
+    user_name,
+    race_no,
+    win_type,
+    runner_no,
+    bet_amt,
+    win_rate,
+    ret_amt
+  )
+VALUES (
+    '홍길동',
+    '111',
+    '단승',
+    '12',
+    100,
+    1.5,
+    100*1.5
+  );
+
+
+INSERT INTO t_sell (
+    user_name,
+    race_no,
+    win_type,
+    runner_no,
+    bet_amt,
+    win_rate,
+    ret_amt
+  )
+VALUES (
+    'ksatterley0',
+    '111',
+    '단승',
+    '12',
+    100,
+    1.5,
+    100*1.5
+  );
+
 -- 자가진단정보 t_self_check
 CREATE TABLE t_self_check(
     user_name varchar(50), /*고객명*/
@@ -70,18 +109,21 @@ CREATE TABLE t_self_check(
 );
 
 insert into t_self_check values ('홍길동', '나쁨', '100', '20240926');
+insert into t_self_check values ('ksatterley0', '나쁨', '100', '20240926');
 
 -- 구매제한 t_self_Limit
-CREATE TABLE t_self_Limit(
+CREATE TABLE t_self_limit(
     user_name varchar(50), /*고객명*/
     st_dy varchar(50), /*경주번호*/
     ed_dy varchar(50), /*승식*/
-    day_limit_amt varchar(50), /*일일제한금액*/
+    day_limit_amt varchar(50), /*일일제한금액 dy로 수정*/
     mon_limit_amt int, /*주일제한금액*/
-    year_limit_amt float,/*달제한금액*/
+    year_limit_amt float /*달제한금액 yr로 수정*/
 );
 
-insert into t_self_Limit values ('홍길동', '20240901', '20409030', 1000, 10000, 100000);
+insert into t_self_limit values ('홍길동', '20240901', '20409030', 1000, 10000, 100000);
+insert into t_self_limit values ('이길동', '20240901', '20409030', 1000, 10000, 100000);
+insert into t_self_limit values ('ksatterley0', '20240901', '20409030', 1000, 10000, 100000);
 
 -- 건전화정보 t_health
 CREATE TABLE t_health(
@@ -92,6 +134,7 @@ CREATE TABLE t_health(
 );
 
 insert into t_health values ('홍길동', '20240901', '20409030', '20230820');
+insert into t_health values ('ksatterley0', '20240901', '20409030', '20230820');
 
 -- 연동정보 t_fep_info
 CREATE TABLE t_fep_info(

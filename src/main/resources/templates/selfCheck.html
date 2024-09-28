@@ -17,15 +17,12 @@ table, tr, td, th{
 <script>
     $(document).ready(function() {
         $('#queryButton').click(function() {
-            <!--var userInfo = $('#userInfo').val();-->
-            var paramMap = {
-                userInfo : $('#userInfo').val()
-            };
+            var userInfo = $('#userInfo').val();
             $.ajax({
                 url: 'selfCheck/getSelfCheck',
-                type: 'POST',
-                <!--data: { paramMap : paramMap },-->
-                data: JSON.stringify(paramMap),
+                type: 'GET',
+                data: { userInfo : userInfo },
+                <!--data: JSON.stringify(paramMap),-->
                 success: function(result) {
                     var htmlcont="";
                     htmlcont+="<tr>";
@@ -50,7 +47,7 @@ table, tr, td, th{
     <option selected>고객명</option>
     <option>아이디</option>
 </select>
-<input type="text" id="userInfo" value="홍길동">
+<input type="text" id="userInfo" value="'홍길동'">
 
 고객명
 <input type="text" id="userName">
