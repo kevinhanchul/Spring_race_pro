@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.SelfCheckInsertMapper">
+    <insert id="selSelfCheckInsert" parameterType="map">
+		insert into t_self_check (user_name, check_res, check_score, input_dy)
+		values (#{user_name}, #{check_res}, #{check_score}, #{input_dy})
+    </insert>
+</mapper>

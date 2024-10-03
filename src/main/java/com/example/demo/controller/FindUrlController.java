@@ -119,7 +119,15 @@ public class FindUrlController {
         mav.addObject("message", "Hello, abc.html!");
         return mav;
     }
-    
+/*
+    @GetMapping("/selfCheckInsert")
+    private ModelAndView selfCheckInsert() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("selfCheckInsert");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+*/
     @PostMapping("/add2")
     public Map<String, Integer> addNumbers(@RequestBody Map<String, String> numbers) throws Exception {
         Map<String, Integer> intNumbers = new HashMap<>();
