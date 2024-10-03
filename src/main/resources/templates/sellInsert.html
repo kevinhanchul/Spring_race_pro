@@ -27,44 +27,37 @@
                     contentType: 'application/json',
                     data: JSON.stringify(paramMap),
                     success: function(result) {
-                    	var htmlcont = "";
-                    	
-                        $('#result').text('주자이름: ' + result.runner_name);
+                    	alert('입력되었습니다.');
                     },
                     error: function() {
-                        $('#result').text('Error retrieving data');
+                        alert('Error retrieving data');
                     }
                 });
             });
         });
     </script>
 
-    이름
-    <input type="text" id="userName">
-    아이디
-    <input type="text" id="userId">
-    <input type="text" id="id" placeholder="Enter ID">
-    <p>Result: <span id="result"></span></p>
+
     <table>
         <tr>
             <td>고객명</td>
-            <td><input type="text" id="userName"></td>
+            <td><input type="text" id="userName" value="홍길동"></td>
         </tr>
         <tr>
             <td>경주번호</td>
-            <td><input type="text" id="raceNo"></td>
+            <td><input type="text" id="raceNo" value="1"></td>
         </tr>
         <tr>
             <td>승식</td>
-            <td><input type="text" id="winType"></td>
+            <td><input type="text" id="winType" value="단승"></td>
         </tr>
         <tr>
             <td>선수선택</td>
-            <td><input type="text" id="runnerNo"></td>
+            <td><input type="text" id="runnerNo" value="홍닐동"></td>
         </tr>
         <tr>
             <td>배팅금액</td>
-            <td><input type="text" id="betAmt"></td>
+            <td><input type="text" id="betAmt" value="1000"></td>
         </tr>
     </table>
 

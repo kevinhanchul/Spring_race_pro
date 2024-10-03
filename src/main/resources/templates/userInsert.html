@@ -16,12 +16,17 @@ table, tr, td, th{
 <script>
     $(document).ready(function() {
         $('#queryButton').click(function() {
-            var id = $('#id').val();
-            id = 1000;
+            var paramMap = {
+                USER_NAME : $('#userName').val(),
+                USER_ID : $('#userId').val(),
+                USER_PW : $('#userPw').val(),
+                USER_EMAIL : $('#userEmail').val()
+			};
             $.ajax({
                 url: '/userInsert/getUserInsert',
-                type: 'GET',
-                data: { id: id },
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(paramMap),
                 success: function(result) {
                 	alert('입력되었습니다.');
                 },
@@ -38,19 +43,19 @@ table, tr, td, th{
 <table>
 <tr>
 <td>이름</td>
-<td><input type="text" id="userName"><br></td>
+<td><input type="text" id="userName" value="한철"><br></td>
 </tr>
 <tr>
 <td>아이디</td>
-<td><input type="text" id="userId"><br></td>
+<td><input type="text" id="userId" value="hch"><br></td>
 </tr>
 <tr>
 <td>패스워드</td>
-<td><input type="text" id="userPw"><br></td>
+<td><input type="text" id="userPw" value="1234"><br></td>
 </tr>
 <tr>
 <td>이메일주소</td>
-<td><input type="text" id="userEmail"><br></td>
+<td><input type="text" id="userEmail" value="a1234@nate.com"><br></td>
 </tr>
 </table>    
 

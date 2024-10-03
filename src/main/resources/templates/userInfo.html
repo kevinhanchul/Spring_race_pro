@@ -16,8 +16,13 @@ table, tr, td, th{
 <script>
     $(document).ready(function() {
         $('#queryButton').click(function() {
-            var id = $('#id').val();
-            id = 1000;
+        	var id = $('#id').val();
+            var paramMap = {
+                USER_NAME : $('#userName').val()
+                user_name : $('#userId').val()
+                user_name : $('#userPw').val()
+                user_name : $('#userEmail').val()
+			};
             $.ajax({
                 url: '/userInfo/getUserInfo',
                 type: 'GET',

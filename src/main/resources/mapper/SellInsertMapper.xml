@@ -4,13 +4,24 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.SellInsertMapper">
+	<select id="chkSell" parameterType="map" resultType="map">
+		select
+			sum(day_limit_amt) day_limit_amt,
+			sum(mon_limit_amt) mon_limit_amt,
+			sum(year_limit_amt) year_limit_amt
+		from t_self_limit
+		where 1 = 1
+			and user_name=#{user_name}
+			and date_format(sysdate(), '%Y%m%d') >= st_dy
+			and date_format(sysdate(), '%Y%m%d') <![CDATA[<=]]> ed_dy
+		group by user_name
+	</select>
+
     <insert id="selSellInsert" parameterType="map">
-        select
-			runner_name,
-			RACE_DY,
-			RACE_CNT,
-			MEET_NO
-		from t_race_info
-		LIMIT 0,1
+		insert into t_sell
+			(user_name, race_no, win_type, runner_no, bet_amt, win_rate, ret_amt)
+		values
+			(#{user_name}, #{race_no}, #{win_type}, #{runner_no}, #{bet_amt},
+			#{win_rate}, #{ret_amt})
     </insert>
 </mapper>

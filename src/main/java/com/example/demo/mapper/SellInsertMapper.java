@@ -6,5 +6,6 @@ import java.util.Map;
 
 @Mapper
 public interface SellInsertMapper {
-	Map<String, Object> selSellInsert(Long id);
+	Map<String, Object> chkSell(Map<String, Object> paramMap);
+	void selSellInsert(Map<String, Object> paramMap);
 }

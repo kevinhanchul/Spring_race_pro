@@ -1,18 +1,18 @@
 package com.example.demo.service;
 
-import com.example.demo.mapper.UserInsertMapper;
+import com.example.demo.mapper.WinnerInsertMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 public class WinnerInsertService {
 
-    private final UserInsertMapper winnerInsertMapper;
+    private final WinnerInsertMapper winnerInsertMapper;
 
-    public WinnerInsertService(UserInsertMapper winnerInsertMapper) {
+    public WinnerInsertService(WinnerInsertMapper winnerInsertMapper) {
         this.winnerInsertMapper = winnerInsertMapper;
     }
 
-    public void getUserInsert(Long id) {
-    	winnerInsertMapper.selUserInsert(id);
+    public void getWinnerInsert(Long id) {
+    	winnerInsertMapper.selWinnerInsert(id);
     }
 }

@@ -15,7 +15,9 @@ public class UserInsertService {
         this.userInsertMapper = userInsertMapper;
     }
 
-    public void getUserInsert(Long id) {
-    	userInsertMapper.selUserInsert(id);
+    public void getUserInsert(Map<String, Object> paramMap) {
+        System.out.println(paramMap);
+
+        userInsertMapper.selUserInsert(paramMap);
     }
 }

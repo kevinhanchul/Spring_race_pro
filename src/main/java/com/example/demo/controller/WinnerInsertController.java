@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.service.UserInsertService;
+import com.example.demo.service.WinnerInsertService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/winnerInsert")
 public class WinnerInsertController {
 
-    private final UserInsertService winnerInsertService;
+    private final WinnerInsertService winnerInsertService;
 
-    public WinnerInsertController(UserInsertService winnerInsertService) {
+    public WinnerInsertController(WinnerInsertService winnerInsertService) {
         this.winnerInsertService = winnerInsertService;
     }
 
-    @GetMapping("/getUserInsert")
-    public void getUserInsert(@RequestParam Long id) {
-        winnerInsertService.getUserInsert(id);
+    @GetMapping("/getWinnerInsert")
+    public void getWinnerInsert(@RequestParam Long id) {
+        winnerInsertService.getWinnerInsert(id);
     }    
 }

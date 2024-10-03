@@ -5,9 +5,7 @@
 
 <mapper namespace="com.example.demo.mapper.FepInfoMapper">
     <select id="selFepInfo" parameterType="long" resultType="map">
-    <!-- SELECT USER_NAME, USER_ID, USER_PW, USER_EMAIL
-    FROM T_USER_INFO WHERE USER_NAME='lwhathamrr' --> 
-        select 
+        select
 			USER_NAME,
 			USER_ID,
 			USER_PW,

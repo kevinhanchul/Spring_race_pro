@@ -4,5 +4,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface WinnerInsertMapper {
-	void selUserInsert(Long id);
+	void selWinnerInsert(Long id);
 }

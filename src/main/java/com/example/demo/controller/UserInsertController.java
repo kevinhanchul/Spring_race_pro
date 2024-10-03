@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.UserInsertService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,8 +22,9 @@ public class UserInsertController {
         this.userInsertService = userInsertService;
     }
 
-    @GetMapping("/getUserInsert")
-    public void getUserInsert(@RequestParam Long id) {
-        userInsertService.getUserInsert(id);
+    @PostMapping("/getUserInsert")
+    public void getUserInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println(paramMap);
+        userInsertService.getUserInsert(paramMap);
     }    
 }

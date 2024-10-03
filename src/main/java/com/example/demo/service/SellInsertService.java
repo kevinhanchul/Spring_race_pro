@@ -14,7 +14,11 @@ public class SellInsertService {
         this.sellInsertMapper = sellInsertMapper;
     }
 
-    public Map<String, Object> getSellInsert(Long id) {
-        return sellInsertMapper.selSellInsert(id);
+    public void getSellInsert(Map<String, Object> paramMap) {
+        System.out.println(paramMap);
+
+        Map<String, Object> checkSell = sellInsertMapper.chkSell(paramMap);
+        System.out.println(checkSell);
+        sellInsertMapper.selSellInsert(paramMap);
     }
 }

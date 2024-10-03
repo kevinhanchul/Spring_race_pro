@@ -16,6 +16,7 @@ public class SelfLimitService {
     }
 
     public List<Map<String, Object>> getSelfLimit(Map<String, Object> paramMap) {
+        System.out.println(paramMap);
         return selfLimitMapper.selSelfLimit(paramMap);
     }
 }

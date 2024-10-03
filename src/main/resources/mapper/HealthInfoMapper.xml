@@ -10,7 +10,7 @@
 			limit_st_dy,
 			limit_ed_dy,
 			input_dy
-		from t_healthInfo
+		from t_health
 		LIMIT 0,1
     </select>
 </mapper>

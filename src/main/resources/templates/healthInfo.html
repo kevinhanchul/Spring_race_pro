@@ -7,26 +7,13 @@
     <title>HealthInfo Query</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
-    <h4>HealthInfo</h4>
-이름 
-<input type="text" id="userName">
-아이디
-<input type="text" id="userId">
-<input type="text" id="id" placeholder="Enter ID">
-<input type="button" value="조회하기" id="queryButton">
-<p>Result: <span id="result"></span></p>
-<table>
-    <tr>
-        <td>고객명</td>
-        <td>경주번호</td>
-        <td>승식</td>
-        <td>선수선택</td>
-        <td>배팅금액</td>
-        <td>배당</td>
-        <td>환불금액</td>
-    </tr>
-</table>
+<style>
+table, tr, td, th{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+
 
     <script>
         $(document).ready(function() {
@@ -38,15 +25,43 @@
                     type: 'GET',
                     data: { id: id },
                     success: function(result) {
-                    	var htmlcont = "";                    	
-                        $('#result').text('고객명: ' + result.user_name); 
+                        var htmlcont="";
+                    	htmlcont+="<tr>";
+                        htmlcont+="<td>"+ result.user_name + "</td>";
+                        htmlcont+="<td>"+ result.limit_st_dy + "</td>";
+                        htmlcont+="<td>"+ result.limit_ed_dy + "</td>";
+                        htmlcont+="<td>"+ result.input_dy + "</td>";
+                        htmlcont+="</tr>";
+                        $('#result_val').html(htmlcont);
                     },
                     error: function() {
-                        $('#result').text('Error retrieving data');
+                        $('#result_val').text('Error retrieving data');
                     }
                 });
             });
         });
     </script>
+<body>
+<h4>HealthInfo</h4>
+이름
+<input type="text" id="userName">
+아이디
+<input type="text" id="userId">
+<input type="text" id="id" placeholder="Enter ID">
+<input type="button" value="조회하기" id="queryButton">
+<p>Result: <span id="result"></span></p>
+
+<table>
+    <thead>
+    <tr>
+        <td>고객명</td>
+        <td>시작일(베팅제한기간-로그인제한)</td>
+        <td>종료일(베팅제한기간-로그인제한)</td>
+        <td>입력일</td>
+    </tr>
+    </thead>
+    <tbody id="result_val"></tbody>
+</table>
+
 </body>
 </html>
