@@ -16,24 +16,29 @@ table, tr, td, th{
 <script>
     $(document).ready(function() {
         $('#queryButton').click(function() {
-            var id = $('#id').val();
-            id = 1000;
+            var paramMap = {
+                user_name : $('#userName').val(),
+                in_amt : $('#inAmt').val(),
+                out_amt : $('#outAmt').val(),
+                rem_amt : $('#remAmt').val()
+			};
             $.ajax({
                 url: '/fepInfo/getFepInfo',
-                type: 'GET',
-                data: { id: id },
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(paramMap),
                 success: function(result) {
                 	var htmlcont="";
                 	htmlcont+="<tr>";
-               		htmlcont+="<td>"+ result.USER_RESULT.USER_NAME + "</td>";
-           			htmlcont+="<td>"+ result.USER_RESULT.USER_ID + "</td>";
-       				htmlcont+="<td>"+ result.USER_RESULT.USER_PW + "</td>";
-   					htmlcont+="<td>"+ result.USER_RESULT.USER_EMAIL + "</td>";
+               		htmlcont+="<td>"+ result.USER_NAME + "</td>";
+           			htmlcont+="<td>"+ result.USER_ID + "</td>";
+       				htmlcont+="<td>"+ result.USER_PW + "</td>";
+   					htmlcont+="<td>"+ result.USER_EMAIL + "</td>";
    					htmlcont+="</tr>";
-                    $('#result_val').html(htmlcont);
+                    $('#result').html(htmlcont);
                 },
                 error: function() {
-                    $('#result_val').html('Error retrieving data');
+                    $('#result').html('Error retrieving data');
                 }
             });
         });
@@ -41,7 +46,7 @@ table, tr, td, th{
 </script>
 
 <body>
-    <h4>FepInfo Query</h4>
+    <h4>Fep입력</h4>
 이름 
 <input type="text" id="fepName">
 아이디
@@ -58,13 +63,13 @@ table, tr, td, th{
 	</colgroup>
     <thead>
     	<tr>
-	        <th>이름</th>
-	        <th>아이디</th>
-	        <th>패스워드</th>
-	        <th>이메일주소</th>
+	        <th>고객명</th>
+	        <th>입금액</th>
+	        <th>출금액</th>
+	        <th>잔액</th>
         </tr>
     </thead>	
-    <tbody id="result_val"></tbody>      
+    <tbody id="result"></tbody>
 </table>
 
 </body>

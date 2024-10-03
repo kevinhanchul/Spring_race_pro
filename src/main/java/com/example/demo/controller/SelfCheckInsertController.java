@@ -31,5 +31,4 @@ public class SelfCheckInsertController {
         System.out.println(paramMap);
         selfCheckInsertService.getSelfCheckInsert(paramMap);
     }
-
 }
