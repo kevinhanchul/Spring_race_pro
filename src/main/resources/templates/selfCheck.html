@@ -17,19 +17,21 @@ table, tr, td, th{
 <script>
     $(document).ready(function() {
         $('#queryButton').click(function() {
-            var userInfo = $('#userInfo').val();
+            var paramMap = {
+                user_name : $('#userName').val()
+			};
             $.ajax({
                 url: 'selfCheck/getSelfCheck',
-                type: 'GET',
-                data: { userInfo : userInfo },
-                <!--data: JSON.stringify(paramMap),-->
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(paramMap),
                 success: function(result) {
                     var htmlcont="";
                     htmlcont+="<tr>";
-                    htmlcont+="<td>"+ result.USER_NAME + "</td>";
-                    htmlcont+="<td>"+ result.CHECK_RES + "</td>";
-                    htmlcont+="<td>"+ result.CHECK_SCORE + "</td>";
-                    htmlcont+="<td>"+ result.INPUT_DY + "</td>";
+                    htmlcont+="<td>"+ result.user_name + "</td>";
+                    htmlcont+="<td>"+ result.check_res + "</td>";
+                    htmlcont+="<td>"+ result.check_score + "</td>";
+                    htmlcont+="<td>"+ result.input_dy + "</td>";
                     htmlcont+="</tr>";
                     $('#result').html(htmlcont);
                 },
@@ -53,10 +55,8 @@ table, tr, td, th{
 <input type="text" id="userName">
 아이디
 <input type="text" id="userId">
-
-
-<input type="text" id="id" placeholder="Enter ID">
 <input type="button" value="조회하기" id="queryButton">
+
 <table>
     <tr>
         <td>고객명</td>

@@ -27,24 +27,37 @@
     </tr>
 </table>
 
-    <script>
-        $(document).ready(function() {
-            $('#queryButton').click(function() {
-                var id = $('#id').val();
-                id=100;
-                $.ajax({
-                    url: '/runnerInfo/getRunnerInfo',
-                    type: 'GET',
-                    data: { id: id },
-                    success: function(result) {
-                        $('#result').text('주자이름: ' + result.runner_result.RUNNER_NAME);
-                    },
-                    error: function() {
-                        $('#result').text('Error retrieving data');
-                    }
-                });
+<script>
+    $(document).ready(function() {
+        $('#queryButton').click(function() {
+            var paramMap = {
+                USER_NAME : $('#userName').val()
+			};
+            $.ajax({
+                url: '/runnerInfo/getRunnerInfo',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(paramMap),
+                success: function(result) {
+                    var htmlcont="";
+                	result.forEach(function(item) {
+	                	htmlcont+="<tr>";
+	               		htmlcont+="<td>"+ item.RUNNER_NAME + "</td>";
+	           			htmlcont+="<td>"+ item.RUNNER_AGE + "</td>";
+	       				htmlcont+="<td>"+ item.RUNNER_GROUP + "</td>";
+	   					htmlcont+="<td>"+ item.RUNNER_WEIGHT + "</td>";
+	   					htmlcont+="<td>"+ item.RUNNER_HIGHT + "</td>";
+	   					htmlcont+="<td>"+ item.RUNNER_WIN_RATE + "</td>";
+	   					htmlcont+="</tr>";
+                	});
+                    $('#result_val').html(htmlcont);
+                },
+                error: function() {
+                    $('#result_val').html('<tr><td colspan="6">No data found</td></tr>');
+                }
             });
         });
-    </script>
+    });
+</script>
 </body>
 </html>

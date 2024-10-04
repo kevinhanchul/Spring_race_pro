@@ -7,9 +7,45 @@
     <title>WinnerInfo Query</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
+<script>
+    $(document).ready(function() {
+        $('#queryButton').click(function() {
+            var paramMap = {
+                USER_NAME : $('#userName').val(),
+                USER_ID : $('#userId').val(),
+                USER_PW : $('#userPw').val(),
+                USER_EMAIL : $('#userEmail').val()
+			};
+            $.ajax({
+                url: '/winnerInfo/getWinnerInfo',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(paramMap),
+                success: function(result) {
+                    var htmlcont="";
+                    htmlcont+="<tr>";
+                    htmlcont+="<td>"+ result.user_name + "</td>";
+                    htmlcont+="<td>"+ result.race_no + "</td>";
+                    htmlcont+="<td>"+ result.win_type + "</td>";
+                    htmlcont+="<td>"+ result.runner_no + "</td>";
+                    htmlcont+="<td>"+ result.bet_amt + "</td>";
+                    htmlcont+="<td>"+ result.win_rate + "</td>";
+                    htmlcont+="<td>"+ result.ret_amt + "</td>";
+                    htmlcont+="</tr>";
+                    $('#result_val').html(htmlcont);
+                },
+                error: function() {
+                    $('#result_val').text('Error retrieving data');
+                }
+            });
+        });
+    });
+</script>
+
 <body>
-    <h4>WinnerInfo Query</h4>
-이름 
+<h4>WinnerInfo Query</h4>
+이름
 <input type="text" id="userName">
 아이디
 <input type="text" id="userId">
@@ -18,33 +54,15 @@
 <p>Result: <span id="result"></span></p>
 <table>
     <tr>
-        <td>선수명</td>
-        <td>일자</td>
-        <td>회차</td>
-        <td>시행처</td>
+        <td>고객명</td>
+        <td>경주번호</td>
+        <td>승식</td>
+        <td>배팅금액</td>
+        <td>배당</td>
+        <td>환불금액</td>
     </tr>
 </table>
 
-    <script>
-        $(document).ready(function() {
-            $('#queryButton').click(function() {
-                var id = $('#id').val();
-                id=100;
-                $.ajax({
-                    url: '/winnerInfo/getWinnerInfo',
-                    type: 'GET',
-                    data: { id: id },
-                    success: function(result) {
-                    	var htmlcont = "";
-                    	
-                        $('#result').text('주자이름: ' + result.runner_name);
-                    },
-                    error: function() {
-                        $('#result').text('Error retrieving data');
-                    }
-                });
-            });
-        });
-    </script>
+
 </body>
 </html>

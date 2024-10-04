@@ -30,10 +30,10 @@ table, tr, td, th{
                 success: function(result) {
                 	var htmlcont="";
                 	htmlcont+="<tr>";
-               		htmlcont+="<td>"+ result.USER_NAME + "</td>";
-           			htmlcont+="<td>"+ result.USER_ID + "</td>";
-       				htmlcont+="<td>"+ result.USER_PW + "</td>";
-   					htmlcont+="<td>"+ result.USER_EMAIL + "</td>";
+               		htmlcont+="<td>"+ result.user_name + "</td>";
+           			htmlcont+="<td>"+ result.in_amt + "</td>";
+       				htmlcont+="<td>"+ result.out_amt + "</td>";
+   					htmlcont+="<td>"+ result.rem_amt + "</td>";
    					htmlcont+="</tr>";
                     $('#result').html(htmlcont);
                 },

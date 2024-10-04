@@ -28,49 +28,38 @@ table, tr, td, th{
                 contentType: 'application/json',
                 data: JSON.stringify(paramMap),
                 success: function(result) {
-                	var htmlcont="";
-                	htmlcont+="<tr>";
-               		htmlcont+="<td>"+ result.user_name + "</td>";
-           			htmlcont+="<td>"+ result.limit_st_dy + "</td>";
-       				htmlcont+="<td>"+ result.limit_ed_dy + "</td>";
-   					htmlcont+="<td>"+ result.input_dy + "</td>";
-   					htmlcont+="</tr>";
-                    $('#result').html(htmlcont);
+                	alert('입력되었습니다.');
                 },
                 error: function() {
-                    $('#result').html('Error retrieving data');
+                    alert('Error retrieving data');
                 }
             });
         });
     });
 </script>
 
-<body>
-    <h4>UserInfo Query</h4>
-이름 
-<input type="text" id="userName">
-아이디
-<input type="text" id="userId">
-<input type="text" id="id" placeholder="Enter ID">
-<input type="button" value="조회하기" id="queryButton">
-
-<table style="width:850px">
-	<colgroup>
-		<col style="width:25%" />
-		<col style="width:25%" />
-		<col style="width:25%" />
-		<col />
-	</colgroup>
-    <thead>
-    	<tr>
-	        <th>이름</th>
-	        <th>아이디</th>
-	        <th>패스워드</th>
-	        <th>이메일주소</th>
-        </tr>
-    </thead>	
-    <tbody id="result"></tbody>
+body>
+<h4>건전화정보입력</h4>
+<table>
+	<tr>
+		<td>이름</td>
+		<td><input type="text" id="userName" value="한철"><br></td>
+	</tr>
+	<tr>
+		<td>시작일(베팅제한기간)</td>
+		<td><input type="text" id="limitStDy" value="20240220"><br></td>
+	</tr>
+	<tr>
+		<td>종료일(베팅제한기간)</td>
+		<td><input type="text" id="limitEdDy" value="20241120"><br></td>
+	</tr>
+	<tr>
+		<td>입력일</td>
+		<td><input type="text" id="input_dy" value="20240220"><br></td>
+	</tr>
 </table>
+
+<input type="button" value="입력하기" id="queryButton"><br>
 
 </body>
 </html>

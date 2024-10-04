@@ -16,35 +16,35 @@ table, tr, td, th{
 
 
 
-    <script>
-        $(document).ready(function() {
-            $('#queryButton').click(function() {
-                var id = $('#id').val();
-                id=100;
-                $.ajax({
-                    url: '/sell/getSell',
-                    type: 'GET',
-                    data: { id: id },
-                    success: function(result) {
-                    	var htmlcont="";
-                        htmlcont+="<tr>";
-                        htmlcont+="<td>"+ result.user_name + "</td>";
-                        htmlcont+="<td>"+ result.race_no + "</td>";
-                        htmlcont+="<td>"+ result.win_type + "</td>";
-                        htmlcont+="<td>"+ result.runner_no + "</td>";
-                        htmlcont+="<td>"+ result.bet_amt + "</td>";
-                        htmlcont+="<td>"+ result.win_rate + "</td>";
-                        htmlcont+="<td>"+ result.ret_amt + "</td>";
-                        htmlcont+="</tr>";
-                        $('#result_val').html(htmlcont);
-                    },
-                    error: function() {
-                        $('#result_val').text('Error retrieving data');
-                    }
-                });
+<script>
+    $(document).ready(function() {
+        $('#queryButton').click(function() {
+            var id = $('#id').val();
+            id=100;
+            $.ajax({
+                url: '/sell/getSell',
+                type: 'GET',
+                data: { id: id },
+                success: function(result) {
+                    var htmlcont="";
+                    htmlcont+="<tr>";
+                    htmlcont+="<td>"+ result.user_name + "</td>";
+                    htmlcont+="<td>"+ result.race_no + "</td>";
+                    htmlcont+="<td>"+ result.win_type + "</td>";
+                    htmlcont+="<td>"+ result.runner_no + "</td>";
+                    htmlcont+="<td>"+ result.bet_amt + "</td>";
+                    htmlcont+="<td>"+ result.win_rate + "</td>";
+                    htmlcont+="<td>"+ result.ret_amt + "</td>";
+                    htmlcont+="</tr>";
+                    $('#result_val').html(htmlcont);
+                },
+                error: function() {
+                    $('#result_val').text('Error retrieving data');
+                }
             });
         });
-    </script>
+    });
+</script>
 
 <body>
 <h4>Sell</h4>
