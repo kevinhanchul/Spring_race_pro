@@ -6,5 +6,5 @@ import java.util.Map;
 
 @Mapper
 public interface FepInfoMapper {
-	Map<String, Object> selFepInfo(Long id);
+	Map<String, Object> selFepInfo(Map<String, Object> paramMap);
 }

@@ -1,10 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.HealthInsertService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
@@ -18,8 +16,15 @@ public class HealthInsertController {
         this.healthInsertService = healthInsertService;
     }
 
+    @GetMapping("/healthInfo")
+    private ModelAndView healthInfo() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("healthInfo");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
     @GetMapping("/getHealthInsert")
-    public Map<String, Object> getHealthInsert(@RequestParam Long id) {
-        return healthInsertService.getHealthInsert(id);
+    public Map<String, Object> getHealthInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
+        return healthInsertService.getHealthInsert(paramMap);
     }    
 }

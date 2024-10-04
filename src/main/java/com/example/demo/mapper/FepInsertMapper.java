@@ -6,5 +6,5 @@ import java.util.Map;
 
 @Mapper
 public interface FepInsertMapper {
-	Map<String, Object> selFepInsert(Long id);
+	Map<String, Object> selFepInsert(Map<String, Object> paramMap);
 }

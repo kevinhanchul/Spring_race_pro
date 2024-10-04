@@ -1,15 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.FepInfoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Map;
 
 @RestController
-@RequestMapping("/fepInfo")
+//@RequestMapping("/fepInfo")
 public class FepInfoController {
 
     private final FepInfoService fepInfoService;
@@ -18,8 +17,17 @@ public class FepInfoController {
         this.fepInfoService = fepInfoService;
     }
 
-    @GetMapping("/getFepInfo")
-    public Map<String, Object> getFepInfo(@RequestParam Long id) {
-        return fepInfoService.getFepInfo(id);
+    @GetMapping("/fepInfo")
+    private ModelAndView fepInfo() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("fepInfo");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+
+    @PostMapping("/fepInfo/getFepInfo")
+    public Map<String, Object> getFepInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println(paramMap);
+        return fepInfoService.getFepInfo(paramMap);
     }    
 }

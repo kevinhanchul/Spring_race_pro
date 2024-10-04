@@ -6,5 +6,5 @@ import java.util.Map;
 
 @Mapper
 public interface HealthInfoMapper {
-	Map<String, Object> selHealthInfo(Long id);
+	Map<String, Object> selHealthInfo(Map<String, Object> paramMap);
 }

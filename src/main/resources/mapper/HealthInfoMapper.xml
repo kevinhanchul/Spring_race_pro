@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.HealthInfoMapper">
-    <select id="selHealthInfo" parameterType="long" resultType="map">
+    <select id="selHealthInfo" parameterType="map" resultType="map">
         select 
 			user_name,
 			limit_st_dy,
