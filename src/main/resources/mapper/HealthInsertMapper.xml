@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.HealthInsertMapper">
+    <select id="selHealthInsert" parameterType="long" resultType="map">
+        select 
+			user_name,
+			limit_st_dy,
+			limit_ed_dy,
+			input_dy
+		from t_health
+		LIMIT 0,1
+    </select>
+</mapper>

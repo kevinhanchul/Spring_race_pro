@@ -5,6 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.Map;
 
 @Mapper
-public interface HealthInsertMapper {
-	Map<String, Object> selHealthInsert(Long id);
+public interface FepInsertMapper {
+	Map<String, Object> selFepInsert(Long id);
 }

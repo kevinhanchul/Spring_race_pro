@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-//import com.example.demo.mapper.HealthInfoMapper;
+//import com.example.demo.mapper.HealthInsertMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -9,15 +9,15 @@ import java.util.Map;
 @Service
 public class HealthInsertService {
 
-  //  private final HealthInfoMapper healthInfoMapper;
+  //  private final HealthInsertMapper healthInsertMapper;
 
-    /*public HealthInfoService(HealthInfoMapper healthInfoMapper) {
-        this.healthInfoMapper = healthInfoMapper;
+    /*public HealthInsertService(HealthInsertMapper healthInsertMapper) {
+        this.healthInsertMapper = healthInsertMapper;
     }*/
 
-    public Map<String, Object> getHealthInfo(Long id) {
+    public Map<String, Object> getHealthInsert(Long id) {
         Map<String, Object> a = new HashMap<>();
-        //return healthInfoMapper.selHealthInfo(id);
+        //return healthInsertMapper.selHealthInsert(id);
         return a;
     }
 }

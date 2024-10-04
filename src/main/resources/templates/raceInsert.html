@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaceInfo Query</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+
+<script>
+    $(document).ready(function() {
+        $('#queryButton').click(function() {
+            var paramMap = {
+                USER_NAME : $('#runner_name').val(),
+                USER_ID : $('#race_dy').val(),
+                USER_PW : $('#race_cnt').val(),
+                USER_EMAIL : $('#meet_no').val()
+            };
+            $.ajax({
+                url: '/raceInfo/getRaceInfo',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(paramMap),
+                success: function(result) {
+                    var htmlcont="";
+                    htmlcont+="<tr>";
+                    htmlcont+="<td>"+ result.runner_name + "</td>";
+                    htmlcont+="<td>"+ result.race_dy + "</td>";
+                    htmlcont+="<td>"+ result.race_cnt + "</td>";
+                    htmlcont+="<td>"+ result.meet_no + "</td>";
+                    htmlcont+="</tr>";
+                    $('#result').html(htmlcont);
+                },
+                error: function() {
+                    $('#result').text('Error retrieving data');
+                }
+            });
+        });
+    });
+</script>
+
+<body>
+<h4>RaceInfo Query</h4>
+이름
+<input type="text" id="userName">
+아이디
+<input type="text" id="userId">
+<input type="text" id="id" placeholder="Enter ID">
+<input type="button" value="조회하기" id="queryButton">
+
+<table style="width:850px">
+    <colgroup>
+        <col style="width:25%" />
+        <col style="width:25%" />
+        <col style="width:25%" />
+        <col />
+    </colgroup>
+    <thead>
+    <tr>
+        <th>선수명</th>
+        <th>일자</th>
+        <th>회차</th>
+        <th>시행처(과천,제주)</th>
+    </tr>
+    </thead>
+    <tbody id="result_val"></tbody>
+</table>
+
+</body>
+</html>
