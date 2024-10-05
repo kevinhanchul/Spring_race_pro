@@ -1,13 +1,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.WinnerInsertService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestBody;
+import java.util.Map;
+import org.springframework.web.bind.annotation.RequestBody;
 @RestController
-@RequestMapping("/winnerInsert")
+//@RequestMapping("/winnerInsert")
 public class WinnerInsertController {
 
     private final WinnerInsertService winnerInsertService;
@@ -16,8 +16,16 @@ public class WinnerInsertController {
         this.winnerInsertService = winnerInsertService;
     }
 
-    @GetMapping("/getWinnerInsert")
-    public void getWinnerInsert(@RequestParam Long id) {
-        winnerInsertService.getWinnerInsert(id);
+    @GetMapping("/winnerInsert")
+    private ModelAndView winnerInsert() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("winnerInsert");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+
+    @PostMapping("/winnerInsert/getWinnerInsert")
+    public void getWinnerInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
+        winnerInsertService.getWinnerInsert(paramMap);
     }    
 }

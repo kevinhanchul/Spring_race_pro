@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.mapper.RaceInfoMapper;
+import com.example.demo.mapper.RaceInsertMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -8,13 +8,13 @@ import java.util.Map;
 @Service
 public class RaceInsertService {
 
-    private final RaceInfoMapper raceInfoMapper;
+    private final RaceInsertMapper raceInsertMapper;
 
-    public RaceInsertService(RaceInfoMapper raceInfoMapper) {
-        this.raceInfoMapper = raceInfoMapper;
+    public RaceInsertService(RaceInsertMapper raceInsertMapper) {
+        this.raceInsertMapper = raceInsertMapper;
     }
 
-    public Map<String, Object> getRaceInfo(Long id) {
-        return raceInfoMapper.selRaceInfo(id);
+    public Map<String, Object> getRaceInsert(Long id) {
+        return raceInsertMapper.selRaceInsert(id);
     }
 }

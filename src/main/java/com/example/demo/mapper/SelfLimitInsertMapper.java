@@ -6,6 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface SelfLimitInsertMapper {
-	List<Map<String, Object>> selSelfLimit(Map<String, Object> paramMap);
+public interface SelfLimitInsertInsertMapper {
+	List<Map<String, Object>> selSelfLimitInsert(Map<String, Object> paramMap);
 }

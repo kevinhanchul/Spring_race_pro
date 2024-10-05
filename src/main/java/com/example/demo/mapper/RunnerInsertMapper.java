@@ -6,5 +6,5 @@ import java.util.Map;
 
 @Mapper
 public interface RunnerInsertMapper {
-	Map<String, Object> selRunnerInfo(Long id);
+	Map<String, Object> selRunnerInsert(Long id);
 }

@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.mapper.RunnerInfoMapper;
+import com.example.demo.mapper.RunnerInsertMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -8,13 +8,13 @@ import java.util.Map;
 @Service
 public class RunnerInsertService {
 
-    private final RunnerInfoMapper runnerInfoMapper;
+    private final RunnerInsertMapper runnerInsertMapper;
 
-    public RunnerInsertService(RunnerInfoMapper runnerInfoMapper) {
-        this.runnerInfoMapper = runnerInfoMapper;
+    public RunnerInsertService(RunnerInsertMapper runnerInsertMapper) {
+        this.runnerInsertMapper = runnerInsertMapper;
     }
 
-    public Map<String, Object> getRunnerInfo(Long id) {
-    	return runnerInfoMapper.selRunnerInfo(id);
+    public Map<String, Object> getRunnerInsert(Long id) {
+    	return runnerInsertMapper.selRunnerInsert(id);
     }
 }

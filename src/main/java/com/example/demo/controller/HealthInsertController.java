@@ -3,11 +3,11 @@ package com.example.demo.controller;
 import com.example.demo.service.HealthInsertService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/healthInsert")
+//@RequestMapping("/healthInsert")
 public class HealthInsertController {
 
     private final HealthInsertService healthInsertService;
@@ -16,14 +16,14 @@ public class HealthInsertController {
         this.healthInsertService = healthInsertService;
     }
 
-    @GetMapping("/healthInfo")
-    private ModelAndView healthInfo() {
+    @GetMapping("/healthInsert")
+    private ModelAndView healthInsert() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("healthInfo");
+        mav.setViewName("healthInsert");
         mav.addObject("message", "Hello, abc.html!");
         return mav;
     }
-    @GetMapping("/getHealthInsert")
+    @PostMapping("/healthInsert/getHealthInsert")
     public Map<String, Object> getHealthInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
         return healthInsertService.getHealthInsert(paramMap);
     }    

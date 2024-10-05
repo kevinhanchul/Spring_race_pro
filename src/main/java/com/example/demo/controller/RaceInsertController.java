@@ -1,15 +1,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.RaceInfoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/raceInfo")
+//@RequestMapping("/raceInfo")
 public class RaceInsertController {
 
     private final RaceInfoService raceInfoService;
@@ -18,8 +16,16 @@ public class RaceInsertController {
         this.raceInfoService = raceInfoService;
     }
 
-    @GetMapping("/getRaceInfo")
-    public Map<String, Object> getRaceInfo(@RequestParam Long id) {
-        return raceInfoService.getRaceInfo(id);
+    @GetMapping("/raceInfo")
+    private ModelAndView raceInfo() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("raceInfo");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+
+    @PostMapping("/getRaceInfo")
+    public Map<String, Object> getRaceInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
+        return raceInfoService.getRaceInfo(paramMap);
     }    
 }

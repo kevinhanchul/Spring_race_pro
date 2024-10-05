@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/sell")
+//@RequestMapping("/sell")
 public class SellController {
 
     private final SellService sellService;
@@ -18,8 +19,16 @@ public class SellController {
         this.sellService = sellService;
     }
 
-    @GetMapping("/getSell")
-    public Map<String, Object> getSell(@RequestParam Long id) {
-        return sellService.getSell(id);
+    @GetMapping("/sell")
+    private ModelAndView sell() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("sell");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+
+    @PostMapping("/sell/getSell")
+    public Map<String, Object> getSell(@RequestBody Map<String, Object> paramMap) throws Exception {
+        return sellService.getSell(paramMap);
     }    
 }

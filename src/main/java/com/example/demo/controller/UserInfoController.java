@@ -5,14 +5,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 
 import java.util.Map;
 
 @RestController
-@RequestMapping("/userInfo")
+//@RequestMapping("/userInfo")
 public class UserInfoController {
 
     private final UserInfoService userInfoService;
@@ -21,8 +23,16 @@ public class UserInfoController {
         this.userInfoService = userInfoService;
     }
 
-    @GetMapping("/getUserInfo")
-    public Map<String, Object> getUserInfo(@RequestParam Long id) {
-        return userInfoService.getUserInfo(id);
+    @GetMapping("/userInfo")
+    private ModelAndView userInfo() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("userInfo");
+        mav.addObject("message", "Hello, abc.html!");
+        return mav;
+    }
+
+    @PostMapping("/userInfo/getUserInfo")
+    public Map<String, Object> getUserInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
+        return userInfoService.getUserInfo(paramMap);
     }    
 }
