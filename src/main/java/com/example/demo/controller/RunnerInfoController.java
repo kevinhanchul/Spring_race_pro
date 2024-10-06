@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,7 +29,8 @@ public class RunnerInfoController {
     }
 
     @PostMapping("/runnerInfo/getRunnerInfo")
-    public Map<String, Object> getRunnerInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
+    public List<Map<String, Object>> getRunnerInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println(paramMap);
         return runnerInfoService.getRunnerInfo(paramMap);
     }    
 }

@@ -32,7 +32,7 @@ public class UserInfoController {
     }
 
     @PostMapping("/userInfo/getUserInfo")
-    public Map<String, Object> getUserInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
+    public List<Map<String, Object>> getUserInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
         return userInfoService.getUserInfo(paramMap);
     }    
 }

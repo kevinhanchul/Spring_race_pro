@@ -7,31 +7,18 @@
     <title>RunnerInfo Query</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
-    <h4>주자</h4>
-이름 
-<input type="text" id="userName">
-아이디
-<input type="text" id="userId">
-<input type="text" id="id" placeholder="Enter ID">
-<input type="button" value="조회하기" id="queryButton">
-<p>Result: <span id="result"></span></p>
-<table>
-    <tr>
-        <td>이름</td>
-        <td>나이</td>
-        <td>소속</td>
-        <td>몸무게</td>
-        <td>키</td>
-        <td>승률</td>
-    </tr>
-</table>
+<style>
+table, tr, td, th{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+</style>
 
 <script>
     $(document).ready(function() {
         $('#queryButton').click(function() {
             var paramMap = {
-                USER_NAME : $('#userName').val()
+                runner_name : $('#runnerName').val()
 			};
             $.ajax({
                 url: '/runnerInfo/getRunnerInfo',
@@ -59,5 +46,33 @@
         });
     });
 </script>
+
+<body>
+<h4>주자</h4>
+이름
+<input type="text" id="runnerName" value="mdigance0">
+<input type="text" id="id" placeholder="Enter ID">
+<input type="button" value="조회하기" id="queryButton">
+<p>Result: <span id="result"></span></p>
+<table>
+    <colgroup>
+        <col style="width:25%" />
+        <col style="width:25%" />
+        <col style="width:25%" />
+        <col />
+    </colgroup>
+    <thead>
+    <tr>
+        <td>이름</td>
+        <td>나이</td>
+        <td>소속</td>
+        <td>몸무게</td>
+        <td>키</td>
+        <td>승률</td>
+    </tr>
+    </thead>
+    <tbody id="result_val"></tbody>
+</table>
+
 </body>
 </html>

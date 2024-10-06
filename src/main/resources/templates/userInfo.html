@@ -31,12 +31,14 @@ table, tr, td, th{
                 data: JSON.stringify(paramMap),
                 success: function(result) {
                 	var htmlcont="";
-                	htmlcont+="<tr>";
-               		htmlcont+="<td>"+ result.user_name + "</td>";
-           			htmlcont+="<td>"+ result.user_id + "</td>";
-       				htmlcont+="<td>"+ result.user_pw + "</td>";
-   					htmlcont+="<td>"+ result.user_email + "</td>";
-   					htmlcont+="</tr>";
+                	result.forEach(function(item) {
+						htmlcont+="<tr>";
+						htmlcont+="<td>"+ item.user_name + "</td>";
+						htmlcont+="<td>"+ item.user_id + "</td>";
+						htmlcont+="<td>"+ item.user_pw + "</td>";
+						htmlcont+="<td>"+ item.user_email + "</td>";
+						htmlcont+="</tr>";
+					});
                     $('#result_val').html(htmlcont);
                 },
                 error: function() {
@@ -50,9 +52,15 @@ table, tr, td, th{
 <body>
     <h4>UserInfo Query</h4>
 이름 
-<input type="text" id="userName">
+<input type="text" id="userName" value="ksatterley0"><br>
 아이디
-<input type="text" id="userId">
+<input type="text" id="userId"><br>
+이메일
+<input type="checkbox" id="userEmail1" value="tiny.cc"><br>
+<input type="checkbox" id="userEmail2" value="desdev.cn"><br>
+<input type="checkbox" id="userEmail3" value="1und1.de"><br>
+
+
 <input type="text" id="id" placeholder="Enter ID">
 <input type="button" value="조회하기" id="queryButton">
 

@@ -11,6 +11,9 @@
 			user_pw,
 			user_email
 		from t_user_info
-		LIMIT 0,1
+		where 1=1
+			<if test="user_name != null and user_name != ''">
+			and user_name=#{user_name}
+			</if>
     </select>
 </mapper>

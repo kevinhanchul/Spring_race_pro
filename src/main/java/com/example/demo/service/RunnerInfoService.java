@@ -4,6 +4,7 @@ import com.example.demo.mapper.RunnerInfoMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -15,7 +16,7 @@ public class RunnerInfoService {
         this.runnerInfoMapper = runnerInfoMapper;
     }
 
-    public Map<String, Object> getRunnerInfo(Map<String, Object> paramMap) {
+    public List<Map<String, Object>> getRunnerInfo(Map<String, Object> paramMap) {
     	return runnerInfoMapper.selRunnerInfo(paramMap);
     }
 }
