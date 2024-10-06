@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.mapper.WinnerInsertMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class WinnerInsertService {
 
@@ -12,7 +14,7 @@ public class WinnerInsertService {
         this.winnerInsertMapper = winnerInsertMapper;
     }
 
-    public void getWinnerInsert(Long id) {
-    	winnerInsertMapper.selWinnerInsert(id);
+    public void getWinnerInsert(Map<String, Object> paramMap) {
+    	winnerInsertMapper.selWinnerInsert(paramMap);
     }
 }

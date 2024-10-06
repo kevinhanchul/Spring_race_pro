@@ -14,7 +14,7 @@ public class RaceInsertService {
         this.raceInsertMapper = raceInsertMapper;
     }
 
-    public Map<String, Object> getRaceInsert(Long id) {
-        return raceInsertMapper.selRaceInsert(id);
+    public void getRaceInsert(Map<String, Object> paramMap) {
+        raceInsertMapper.selRaceInsert(paramMap);
     }
 }

@@ -15,8 +15,8 @@ public class HealthInsertService {
         this.healthInsertMapper = healthInsertMapper;
     }
 
-    public Map<String, Object> getHealthInsert(Map<String, Object> paramMap) {
-        return healthInsertMapper.selHealthInsert(paramMap);
+    public void getHealthInsert(Map<String, Object> paramMap) {
+        healthInsertMapper.selHealthInsert(paramMap);
 
     }
 }

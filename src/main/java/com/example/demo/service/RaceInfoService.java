@@ -14,7 +14,7 @@ public class RaceInfoService {
         this.raceInfoMapper = raceInfoMapper;
     }
 
-    public Map<String, Object> getRaceInfo(Long id) {
-        return raceInfoMapper.selRaceInfo(id);
+    public Map<String, Object> getRaceInfo(Map<String, Object> paramMap) {
+        return raceInfoMapper.selRaceInfo(paramMap);
     }
 }

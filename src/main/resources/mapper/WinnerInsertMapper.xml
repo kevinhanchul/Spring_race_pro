@@ -4,17 +4,8 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.WinnerInsertMapper">
-    <insert id="selWinnerInsert" parameterType="long">
-    	insert into T_USER_INFO (USER_NAME, USER_ID, USER_PW, USER_EMAIL)
+    <insert id="selWinnerInsert" parameterType="map">
+    	insert into t_user_info (user_name, user_id, user_pw, user_email)
     	values ('100','2','3','4')
-	    <!-- SELECT USER_NAME, USER_ID, USER_PW, USER_EMAIL
-	    FROM T_USER_INFO WHERE USER_NAME='lwhathamrr' --> 
-        <!-- select 
-			USER_NAME,
-			USER_ID,
-			USER_PW,
-			USER_EMAIL
-		from t_winner_info
-		LIMIT 0,1 -->
     </insert>
 </mapper>

@@ -6,5 +6,5 @@ import java.util.Map;
 
 @Mapper
 public interface WinnerInfoMapper {
-	Map<String, Object> selWinnerInfo(Long id);
+	Map<String, Object> selWinnerInfo(Map<String, Object> paramMap);
 }

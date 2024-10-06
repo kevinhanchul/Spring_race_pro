@@ -13,10 +13,10 @@
     $(document).ready(function() {
         $('#queryButton').click(function() {
             var paramMap = {
-                USER_NAME : $('#runner_name').val(),
-                USER_ID : $('#race_dy').val(),
-                USER_PW : $('#race_cnt').val(),
-                USER_EMAIL : $('#meet_no').val()
+                user_name : $('#user_name').val(),
+                limit_st_dy : $('#limit_st_dy').val(),
+                limit_ed_dy : $('#limit_ed_dy').val(),
+                input_dy : $('#input_dy').val()
             };
             $.ajax({
                 url: '/raceInfo/getRaceInfo',
@@ -24,17 +24,10 @@
                 contentType: 'application/json',
                 data: JSON.stringify(paramMap),
                 success: function(result) {
-                    var htmlcont="";
-                    htmlcont+="<tr>";
-                    htmlcont+="<td>"+ result.runner_name + "</td>";
-                    htmlcont+="<td>"+ result.race_dy + "</td>";
-                    htmlcont+="<td>"+ result.race_cnt + "</td>";
-                    htmlcont+="<td>"+ result.meet_no + "</td>";
-                    htmlcont+="</tr>";
-                    $('#result').html(htmlcont);
+                    alert('입력되었습니다');
                 },
                 error: function() {
-                    $('#result').text('Error retrieving data');
+                    alert('Error retrieving data');
                 }
             });
         });

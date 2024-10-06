@@ -6,5 +6,5 @@ import java.util.Map;
 
 @Mapper
 public interface SelfCheckMapper {
-	Map<String, Object> selSelfCheck(String userInfo);
+	Map<String, Object> selSelfCheck(Map<String, Object> paramMap);
 }

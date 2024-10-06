@@ -4,13 +4,8 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.FepInsertMapper">
-    <select id="selFepInsert" parameterType="map" resultType="map">
-        select
-			USER_NAME,
-			USER_ID,
-			USER_PW,
-			USER_EMAIL
-		from t_fep_info
-		LIMIT 0,1
-    </select>
+    <insert id="selFepInsert" parameterType="map">
+		insert into t_fep_info (user_name, in_amt, out_amt, rem_amt)
+		values (#{user_name}, #{in_amt}, #{out_amt}, #{rem_amt})
+    </insert>
 </mapper>

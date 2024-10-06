@@ -14,10 +14,11 @@ public class WinnerInfoService {
         this.winnerInfoMapper = winnerInfoMapper;
     }
 
-    public Map<String, Object> getWinnerInfo(Long id) {
-    	Map<String, Object> winner_result = winnerInfoMapper.selWinnerInfo(id);
+    public Map<String, Object> getWinnerInfo(Map<String, Object> paramMap) {
+
+//    	Map<String, Object> winner_result = winnerInfoMapper.selWinnerInfo(id);
         //Map<String, Object> resultMap = new HashMap<>();
         //resultMap.put("winner_result", winner_result);
-        return winner_result;
+        return winnerInfoMapper.selWinnerInfo(paramMap);
     }
 }

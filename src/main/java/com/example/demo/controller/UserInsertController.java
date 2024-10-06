@@ -32,7 +32,7 @@ public class UserInsertController {
         return mav;
     }
 
-    @PostMapping("/getUserInsert")
+    @PostMapping("/userInsert/getUserInsert")
     public void getUserInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
         System.out.println(paramMap);
         userInsertService.getUserInsert(paramMap);

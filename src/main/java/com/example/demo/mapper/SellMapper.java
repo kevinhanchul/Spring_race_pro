@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface SellMapper {
-	Map<String, Object> selSell(Long id);
+	Map<String, Object> selSell(Map<String, Object> paramMap);
 }

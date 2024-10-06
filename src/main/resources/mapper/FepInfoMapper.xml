@@ -6,11 +6,11 @@
 <mapper namespace="com.example.demo.mapper.FepInfoMapper">
     <select id="selFepInfo" parameterType="map" resultType="map">
         select
-			USER_NAME,
-			USER_ID,
-			USER_PW,
-			USER_EMAIL
+			user_name,
+			in_amt,
+			out_amt,
+			rem_amt
 		from t_fep_info
-		LIMIT 0,1
+		where user_name=#{user_name}
     </select>
 </mapper>

@@ -4,18 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.SelfLimitMapper">
-    <select id="selSelfLimit" parameterType="map" resultType="map">
-        select 
-			user_name,
+    <insert id="selSelfLimit" parameterType="map">
+		insert into t_self_limit(user_name,
 			st_dy,
 			ed_dy,
 			day_limit_amt,
 			mon_limit_amt,
-			year_limit_amt
-		from t_self_limit
-		where 1 = 1
-		 	<if test="user_name != null and user_name != ''">
-			and user_name = ${user_name}
-		 	</if>
-    </select>
+			year_limit_amt)
+		values (#{user_name}, #{st_dy}, #{ed_dy},
+			#{day_limit_amt}, #{mon_limit_amt},
+			#{year_limit_amt})
+    </insert>
 </mapper>

@@ -12,5 +12,6 @@
 			input_dy
 		from t_health
 		LIMIT 0,1
+		where user_name=#{user_name}
     </select>
 </mapper>

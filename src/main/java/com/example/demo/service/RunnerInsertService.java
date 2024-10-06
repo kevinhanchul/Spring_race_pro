@@ -14,7 +14,7 @@ public class RunnerInsertService {
         this.runnerInsertMapper = runnerInsertMapper;
     }
 
-    public Map<String, Object> getRunnerInsert(Long id) {
-    	return runnerInsertMapper.selRunnerInsert(id);
+    public void getRunnerInsert(Long id) {
+    	runnerInsertMapper.selRunnerInsert(id);
     }
 }

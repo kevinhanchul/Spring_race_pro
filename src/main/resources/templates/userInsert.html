@@ -17,10 +17,10 @@ table, tr, td, th{
     $(document).ready(function() {
         $('#queryButton').click(function() {
             var paramMap = {
-                USER_NAME : $('#userName').val(),
-                USER_ID : $('#userId').val(),
-                USER_PW : $('#userPw').val(),
-                USER_EMAIL : $('#userEmail').val()
+                userName : $('#userName').val(),
+                userId : $('#userId').val(),
+                userPw : $('#userPw').val(),
+                userEmail : $('#userEmail').val()
 			};
             $.ajax({
                 url: '/userInsert/getUserInsert',

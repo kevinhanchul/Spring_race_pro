@@ -41,16 +41,9 @@
                 success: function(result) {
                     var htmlcont="";
                 	result.forEach(function(item) {
-	                	htmlcont+="<tr>";
-	               		htmlcont+="<td>"+ item.RUNNER_NAME + "</td>";
-	           			htmlcont+="<td>"+ item.RUNNER_AGE + "</td>";
-	       				htmlcont+="<td>"+ item.RUNNER_GROUP + "</td>";
-	   					htmlcont+="<td>"+ item.RUNNER_WEIGHT + "</td>";
-	   					htmlcont+="<td>"+ item.RUNNER_HIGHT + "</td>";
-	   					htmlcont+="<td>"+ item.RUNNER_WIN_RATE + "</td>";
-	   					htmlcont+="</tr>";
+	                	alert('입력되었습니다');
                 	});
-                    $('#result_val').html(htmlcont);
+                        alert('Error retrieving data');
                 },
                 error: function() {
                     $('#result_val').html('<tr><td colspan="6">No data found</td></tr>');

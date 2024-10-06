@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface RunnerInfoMapper {
-	Map<String, Object> selRunnerInfo(Long id);
+	Map<String, Object> selRunnerInfo(Map<String, Object> paramMap);
 }

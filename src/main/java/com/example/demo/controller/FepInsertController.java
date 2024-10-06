@@ -26,7 +26,7 @@ public class FepInsertController {
     }
 
     @PostMapping("/fepInfo/getFepInsert")
-    public Map<String, Object> getFepInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
-        return fepInsertService.getFepInsert(paramMap);
+    public void getFepInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
+        fepInsertService.getFepInsert(paramMap);
     }    
 }

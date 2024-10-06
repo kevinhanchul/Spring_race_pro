@@ -24,8 +24,8 @@ public class RaceInsertController {
         return mav;
     }
 
-    @PostMapping("/getRaceInfo")
-    public Map<String, Object> getRaceInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
-        return raceInfoService.getRaceInfo(paramMap);
+    @PostMapping("/raceInfo/getRaceInfo")
+    public void getRaceInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
+        raceInfoService.getRaceInfo(paramMap);
     }    
 }

@@ -25,7 +25,7 @@ public class RunnerInsertController {
     }
 
     @PostMapping("/runnerInfo/getRunnerInfo")
-    public Map<String, Object> getRunnerInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
-        return runnerInfoService.getRunnerInfo(paramMap);
+    public void getRunnerInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
+        runnerInfoService.getRunnerInfo(paramMap);
     }
 }

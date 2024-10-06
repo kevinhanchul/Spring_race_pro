@@ -4,14 +4,14 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.SelfCheckMapper">
-    <select id="selSelfCheck" parameterType="String" resultType="map">
-		SELECT
-			USER_NAME,
-			CHECK_RES,
-			CHECK_SCORE,
-			INPUT_DY
-		FROM T_SELF_CHECK
-		where USER_NAME = ${userInfo}
+    <select id="selSelfCheck" parameterType="map" resultType="map">
+		select
+			user_name,
+			check_res,
+			check_score,
+			input_dy
+		from t_self_check
+		where user_name = ${userInfo}
 		LIMIT 0,1
     </select>
 </mapper>

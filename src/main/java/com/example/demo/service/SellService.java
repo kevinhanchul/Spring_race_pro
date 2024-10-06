@@ -15,8 +15,7 @@ public class SellService {
         this.sellMapper = sellMapper;
     }
 
-    public Map<String, Object> getSell(Long id) {
-    	Map<String, Object> sell_info = sellMapper.selSell(id);
-        return sell_info;
+    public Map<String, Object> getSell(Map<String, Object> paramMap) {
+    	return sellMapper.selSell(paramMap);
     }
 }

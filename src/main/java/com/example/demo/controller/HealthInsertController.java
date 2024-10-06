@@ -24,7 +24,7 @@ public class HealthInsertController {
         return mav;
     }
     @PostMapping("/healthInsert/getHealthInsert")
-    public Map<String, Object> getHealthInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
-        return healthInsertService.getHealthInsert(paramMap);
+    public void getHealthInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
+        healthInsertService.getHealthInsert(paramMap);
     }    
 }

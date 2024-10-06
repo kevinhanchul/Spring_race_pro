@@ -15,7 +15,7 @@ public class RunnerInfoService {
         this.runnerInfoMapper = runnerInfoMapper;
     }
 
-    public Map<String, Object> getRunnerInfo(Long id) {
-    	return runnerInfoMapper.selRunnerInfo(id);
+    public Map<String, Object> getRunnerInfo(Map<String, Object> paramMap) {
+    	return runnerInfoMapper.selRunnerInfo(paramMap);
     }
 }

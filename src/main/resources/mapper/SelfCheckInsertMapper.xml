@@ -5,7 +5,9 @@
 
 <mapper namespace="com.example.demo.mapper.SelfCheckInsertMapper">
     <insert id="selSelfCheckInsert" parameterType="map">
-		insert into t_self_check (user_name, check_res, check_score, input_dy)
-		values (#{user_name}, #{check_res}, #{check_score}, #{input_dy})
+		insert into t_self_check
+        (user_name, check_res, check_score, input_dy)
+		values
+        (#{user_name}, #{check_res}, #{check_score}, #{input_dy})
     </insert>
 </mapper>

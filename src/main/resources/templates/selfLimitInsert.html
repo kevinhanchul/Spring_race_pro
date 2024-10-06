@@ -28,16 +28,9 @@ table, tr, td, th{
                 success: function(result) {
                 	var htmlcont="";
                 	result.forEach(function(item) {
-	                	htmlcont+="<tr>";
-	               		htmlcont+="<td>"+ item.user_name + "</td>";
-	           			htmlcont+="<td>"+ item.st_dy + "</td>";
-	       				htmlcont+="<td>"+ item.ed_dy + "</td>";
-	   					htmlcont+="<td>"+ item.day_limit_amt + "</td>";
-	   					htmlcont+="<td>"+ item.mon_limit_amt + "</td>";
-	   					htmlcont+="<td>"+ item.year_limit_amt + "</td>";
-	   					htmlcont+="</tr>";
+	                	alert('입력되었습니다');
                 	});
-                    $('#result_val').html(htmlcont);
+                    	alert('Error retrieving data');
                 },
                 error: function() {
                     $('#result_val').html('<tr><td colspan="6">No data found</td></tr>');

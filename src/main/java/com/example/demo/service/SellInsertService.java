@@ -17,8 +17,8 @@ public class SellInsertService {
     public void getSellInsert(Map<String, Object> paramMap) {
         System.out.println(paramMap);
 
-        Map<String, Object> checkSell = sellInsertMapper.chkSell(paramMap);
-        System.out.println(checkSell);
+        //Map<String, Object> checkSell = sellInsertMapper.chkSell(paramMap);
+        //System.out.println(checkSell);
         sellInsertMapper.selSellInsert(paramMap);
     }
 }
