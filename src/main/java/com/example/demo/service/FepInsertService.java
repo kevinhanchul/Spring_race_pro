@@ -18,7 +18,6 @@ public class FepInsertService {
     public void getFepInsert(Map<String, Object> paramMap) {
         System.out.println(paramMap);
         fepInsertMapper.selFepInsert(paramMap);
-
     }
     
 }

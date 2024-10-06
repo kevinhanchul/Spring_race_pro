@@ -1,31 +1,31 @@
 package com.example.demo.controller;
 
-import com.example.demo.service.RunnerInfoService;
+import com.example.demo.service.RunnerInsertService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Map;
 
 @RestController
-//@RequestMapping("/runnerInfo")
+//@RequestMapping("/runnerInsert")
 public class RunnerInsertController {
 
-    private final RunnerInfoService runnerInfoService;
+    private final RunnerInsertService runnerInsertService;
 
-    public RunnerInsertController(RunnerInfoService runnerInfoService) {
-        this.runnerInfoService = runnerInfoService;
+    public RunnerInsertController(RunnerInsertService runnerInsertService) {
+        this.runnerInsertService = runnerInsertService;
     }
 
-    @GetMapping("/runnerInfo")
-    private ModelAndView runnerInfo() {
+    @GetMapping("/runnerInsert")
+    private ModelAndView runnerInsert() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("runnerInfo");
+        mav.setViewName("runnerInsert");
         mav.addObject("message", "Hello, abc.html!");
         return mav;
     }
 
-    @PostMapping("/runnerInfo/getRunnerInfo")
-    public void getRunnerInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
-        runnerInfoService.getRunnerInfo(paramMap);
+    @PostMapping("/runnerInsert/getRunnerInsert")
+    public void getRunnerInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
+        runnerInsertService.getRunnerInsert(paramMap);
     }
 }

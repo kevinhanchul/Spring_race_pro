@@ -7,7 +7,12 @@
     <title>WinnerInfo Query</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-
+<style>
+table, tr, td, th{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+</style>
 <script>
     $(document).ready(function() {
         $('#queryButton').click(function() {
@@ -28,8 +33,7 @@
                     htmlcont+="<td>"+ result.user_name + "</td>";
                     htmlcont+="<td>"+ result.race_no + "</td>";
                     htmlcont+="<td>"+ result.win_type + "</td>";
-                    htmlcont+="<td>"+ result.runner_no + "</td>";
-                    htmlcont+="<td>"+ result.bet_amt + "</td>";
+                    htmlcont+="<td>"+ result.race_amt + "</td>";
                     htmlcont+="<td>"+ result.win_rate + "</td>";
                     htmlcont+="<td>"+ result.ret_amt + "</td>";
                     htmlcont+="</tr>";
@@ -53,14 +57,24 @@
 <input type="button" value="조회하기" id="queryButton">
 <p>Result: <span id="result"></span></p>
 <table>
-    <tr>
-        <td>고객명</td>
-        <td>경주번호</td>
-        <td>승식</td>
-        <td>배팅금액</td>
-        <td>배당</td>
-        <td>환불금액</td>
-    </tr>
+    <colgroup>
+        <col style="width:15%" />
+        <col style="width:15%" />
+        <col style="width:15%" />
+        <col style="width:15%" />
+        <col />
+    </colgroup>
+    <thead>
+        <tr>
+            <td>고객명</td>
+            <td>경주번호</td>
+            <td>승식</td>
+            <td>배팅금액</td>
+            <td>배당</td>
+            <td>환불금액</td>
+        </tr>
+    </thead>
+    <tbody id="result_val"></tbody>
 </table>
 
 

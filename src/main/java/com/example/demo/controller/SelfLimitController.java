@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.service.SelfLimitService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Map;

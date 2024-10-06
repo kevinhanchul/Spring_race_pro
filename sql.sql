@@ -49,6 +49,7 @@ CREATE TABLE t_winner_info (
     ret_amt int/*환불금액*/
 );
 
+insert into t_winner_info values ('홍길동', '123', '쌍승', 500, 1.5, 500*1.5);
 
 -- 구매정보 sell
 CREATE TABLE t_sell(

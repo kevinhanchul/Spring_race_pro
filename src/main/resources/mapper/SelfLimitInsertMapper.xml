@@ -3,8 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.demo.mapper.SelfLimitMapper">
-    <insert id="selSelfLimit" parameterType="map">
+<mapper namespace="com.example.demo.mapper.SelfLimitInsertMapper">
+    <insert id="selSelfLimitInsert" parameterType="map">
 		insert into t_self_limit(user_name,
 			st_dy,
 			ed_dy,

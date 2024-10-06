@@ -3,8 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.demo.mapper.RunnerInfoMapper">
-    <insert id="selRunnerInfo" parameterType="map">
+<mapper namespace="com.example.demo.mapper.RunnerInsertMapper">
+    <insert id="selRunnerInsert" parameterType="map">
 		insert into t_runner_info (runner_name,
 		runner_age,
 		runner_group,

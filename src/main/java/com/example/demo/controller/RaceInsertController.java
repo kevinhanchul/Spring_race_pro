@@ -1,31 +1,31 @@
 package com.example.demo.controller;
 
-import com.example.demo.service.RaceInfoService;
+import com.example.demo.service.RaceInsertService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.Map;
 
 @RestController
-//@RequestMapping("/raceInfo")
+//@RequestMapping("/raceInsert")
 public class RaceInsertController {
 
-    private final RaceInfoService raceInfoService;
+    private final RaceInsertService raceInsertService;
 
-    public RaceInsertController(RaceInfoService raceInfoService) {
-        this.raceInfoService = raceInfoService;
+    public RaceInsertController(RaceInsertService raceInsertService) {
+        this.raceInsertService = raceInsertService;
     }
 
-    @GetMapping("/raceInfo")
-    private ModelAndView raceInfo() {
+    @GetMapping("/raceInsert")
+    private ModelAndView raceInsert() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("raceInfo");
+        mav.setViewName("raceInsert");
         mav.addObject("message", "Hello, abc.html!");
         return mav;
     }
 
-    @PostMapping("/raceInfo/getRaceInfo")
-    public void getRaceInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
-        raceInfoService.getRaceInfo(paramMap);
+    @PostMapping("/raceInsert/getRaceInsert")
+    public void getRaceInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
+        raceInsertService.getRaceInsert(paramMap);
     }    
 }

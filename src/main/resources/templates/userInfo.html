@@ -17,22 +17,25 @@ table, tr, td, th{
     $(document).ready(function() {
         $('#queryButton').click(function() {
             var paramMap = {
-                USER_NAME : $('#userName').val()
-                user_name : $('#userId').val()
-                user_name : $('#userPw').val()
-                user_name : $('#userEmail').val()
+                user_name : $('#userName').val(),
+                user_id : $('#userId').val(),
+                user_pw : $('#userPw').val(),
+                user_email : $('#userEmail').val()
 			};
             $.ajax({
                 url: '/userInfo/getUserInfo',
-                type: 'GET',
-                data: { id: id },
+                //type: 'GET',
+                //data: { id : id },
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(paramMap),
                 success: function(result) {
                 	var htmlcont="";
                 	htmlcont+="<tr>";
-               		htmlcont+="<td>"+ result.USER_RESULT.USER_NAME + "</td>";
-           			htmlcont+="<td>"+ result.USER_RESULT.USER_ID + "</td>";
-       				htmlcont+="<td>"+ result.USER_RESULT.USER_PW + "</td>";
-   					htmlcont+="<td>"+ result.USER_RESULT.USER_EMAIL + "</td>";
+               		htmlcont+="<td>"+ result.user_name + "</td>";
+           			htmlcont+="<td>"+ result.user_id + "</td>";
+       				htmlcont+="<td>"+ result.user_pw + "</td>";
+   					htmlcont+="<td>"+ result.user_email + "</td>";
    					htmlcont+="</tr>";
                     $('#result_val').html(htmlcont);
                 },

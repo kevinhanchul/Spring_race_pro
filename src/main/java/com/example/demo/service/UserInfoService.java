@@ -16,11 +16,12 @@ public class UserInfoService {
     }
 
     public Map<String, Object> getUserInfo(Map<String, Object> paramMap) {
-    	Map<String, Object> USER_RESULT;
+    	/*Map<String, Object> USER_RESULT;
     	USER_RESULT =  userInfoMapper.selUserInfo(paramMap);
         Map<String, Object> resultMap = new HashMap<>();
         resultMap.put("USER_RESULT", USER_RESULT);
-        return resultMap;
+        return resultMap;*/
+        return userInfoMapper.selUserInfo(paramMap);
     }
     
 }
