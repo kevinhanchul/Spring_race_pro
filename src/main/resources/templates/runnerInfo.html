@@ -18,7 +18,8 @@ table, tr, td, th{
     $(document).ready(function() {
         $('#queryButton').click(function() {
             var paramMap = {
-                runner_name : $('#runnerName').val()
+                runner_name : $('#runnerName').val(),
+                runner_age : $('#runnerAge').val()
 			};
             $.ajax({
                 url: '/runnerInfo/getRunnerInfo',
@@ -51,6 +52,12 @@ table, tr, td, th{
 <h4>주자</h4>
 이름
 <input type="text" id="runnerName" value="mdigance0">
+나이
+<select id="runnerAge">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+</select>
 <input type="text" id="id" placeholder="Enter ID">
 <input type="button" value="조회하기" id="queryButton">
 <p>Result: <span id="result"></span></p>

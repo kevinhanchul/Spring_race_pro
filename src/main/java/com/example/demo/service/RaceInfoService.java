@@ -4,7 +4,7 @@ import com.example.demo.mapper.RaceInfoMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-
+import java.util.List;
 @Service
 public class RaceInfoService {
 
@@ -14,7 +14,7 @@ public class RaceInfoService {
         this.raceInfoMapper = raceInfoMapper;
     }
 
-    public Map<String, Object> getRaceInfo(Map<String, Object> paramMap) {
+    public List<Map<String, Object>> getRaceInfo(Map<String, Object> paramMap) {
         return raceInfoMapper.selRaceInfo(paramMap);
     }
 }

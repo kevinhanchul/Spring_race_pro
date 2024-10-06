@@ -16,11 +16,25 @@ table, tr, td, th{
 <script>
     $(document).ready(function() {
         $('#queryButton').click(function() {
+        	var a = $("#userEmail1").prop("checked");
+        	var user_email1="", user_email2="", user_email3="";
+        	if($("#userEmail1").prop("checked")){
+        		user_email1 = $('#userEmail1').val();
+        	}
+        	if($("#userEmail2").prop("checked")){
+        		user_email2 = $('#userEmail2').val();
+        	}
+        	if($("#userEmail3").prop("checked")){
+        		user_email3 = $('#userEmail3').val();
+        	}
+        	console.log(a);
             var paramMap = {
                 user_name : $('#userName').val(),
                 user_id : $('#userId').val(),
                 user_pw : $('#userPw').val(),
-                user_email : $('#userEmail').val()
+                user_email1 : user_email1,
+                user_email2 : user_email2,
+                user_email3 : user_email3
 			};
             $.ajax({
                 url: '/userInfo/getUserInfo',
@@ -55,9 +69,11 @@ table, tr, td, th{
 <input type="text" id="userName" value="ksatterley0"><br>
 아이디
 <input type="text" id="userId"><br>
-이메일
+이메일그룹1
 <input type="checkbox" id="userEmail1" value="tiny.cc"><br>
+이메일그룹2
 <input type="checkbox" id="userEmail2" value="desdev.cn"><br>
+이메일그룹3
 <input type="checkbox" id="userEmail3" value="1und1.de"><br>
 
 

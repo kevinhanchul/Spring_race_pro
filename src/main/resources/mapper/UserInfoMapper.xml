@@ -15,5 +15,14 @@
 			<if test="user_name != null and user_name != ''">
 			and user_name=#{user_name}
 			</if>
+			<if test="user_email1 != null and user_email1 != ''">
+				and user_email like '%'||#{user_email1}||'%'
+			</if>
+			<if test="user_email2 != null and user_email2 != ''">
+				or user_email like '%'||#{user_email2}||'%'
+			</if>
+			<if test="user_email3 != null and user_email3 != ''">
+				or user_email like '%'||#{user_email3}||'%'
+			</if>
     </select>
 </mapper>

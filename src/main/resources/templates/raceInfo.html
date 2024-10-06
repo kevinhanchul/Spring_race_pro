@@ -7,44 +7,85 @@
     <title>RaceInfo Query</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-
+<style>
+table, tr, td, th{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+</style>
 
 <script>
-    $(document).ready(function() {
-        $('#queryButton').click(function() {
-            var paramMap = {
-                USER_NAME : $('#runner_name').val(),
-                USER_ID : $('#race_dy').val(),
-                USER_PW : $('#race_cnt').val(),
-                USER_EMAIL : $('#meet_no').val()
-            };
-            $.ajax({
-                url: '/raceInfo/getRaceInfo',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(paramMap),
-                success: function(result) {
-                    var htmlcont="";
+$(document).ready(function() {
+    $('#queryButton').click(function() {
+
+        var runner_name_group = [];
+        var runner_name;
+        
+        /*체크박스 Jquery관련*/
+        $(".runnnerChk").each(function(i){
+            runner_name = $(this).val();
+            console.log(runner_name);
+            runner_name_group[i] = runner_name;
+        });
+        for(var i=0; i<5; i++){
+            console.log(runner_name_group[i]);
+        }
+
+        var paramMap = {
+            runner_name : $('#runner_name').val(),
+            race_dy : $('#race_dy').val(),
+            race_cnt : $('#race_cnt').val(),
+            meet_no : $('#meet_no').val(),
+            runner_name_group : runner_name_group
+        };
+
+        $.ajax({
+            url: '/raceInfo/getRaceInfo',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(paramMap),
+            success: function(result) {
+                var htmlcont="";
+                result.forEach(function(item) {
                     htmlcont+="<tr>";
-                    htmlcont+="<td>"+ result.runner_name + "</td>";
-                    htmlcont+="<td>"+ result.race_dy + "</td>";
-                    htmlcont+="<td>"+ result.race_cnt + "</td>";
-                    htmlcont+="<td>"+ result.meet_no + "</td>";
+                    htmlcont+="<td>"+ item.runner_name + "</td>";
+                    htmlcont+="<td>"+ item.race_dy + "</td>";
+                    htmlcont+="<td>"+ item.race_cnt + "</td>";
+                    htmlcont+="<td>"+ item.meet_no + "</td>";
                     htmlcont+="</tr>";
-                    $('#result').html(htmlcont);
-                },
-                error: function() {
-                    $('#result').text('Error retrieving data');
-                }
-            });
+                });
+                $('#result_val').html(htmlcont);
+            },
+            error: function() {
+                $('#result_val').text('Error retrieving data');
+            }
         });
     });
+});
+
+function fn_totChk(){
+    console.log("a");
+    if ($("#totChk").prop("checked")) {
+        $(".runnnerChk").prop("checked",true);
+    } else {
+        $(".runnnerChk").prop("checked",false);
+    }
+    /*
+    $(".runnnerChk").each(function(){
+        $(".runnnerChk").prop("checked",true);
+    });*/
+}
+
 </script>
 
 <body>
 <h4>RaceInfo Query</h4>
-이름
-<input type="text" id="userName">
+선수명 전체 <input type="checkbox" id="totChk" onclick="fn_totChk()"><br>
+선수명1 <input type="checkbox" class="runnnerChk" value="haltofts0"><br>
+선수명2 <input type="checkbox" class="runnnerChk" value="emalham1"><br>
+선수명3 <input type="checkbox" class="runnnerChk" value="hbriscow2"><br>
+선수명4 <input type="checkbox" class="runnnerChk" value="cgallemore3"><br>
+선수명5 <input type="checkbox" class="runnnerChk" value="ffleckney4"><br>
 아이디
 <input type="text" id="userId">
 <input type="text" id="id" placeholder="Enter ID">
