@@ -5,7 +5,8 @@
 
 <mapper namespace="com.example.demo.mapper.SellMapper">
     <select id="selSell" parameterType="map" resultType="map">
-        select 
+        select
+			@rownum:=@rownum+1 as rownum,
 			user_name,
 			race_no,
 			win_type,
@@ -14,6 +15,7 @@
 			win_rate,
 			ret_amt
 		from t_sell
-		LIMIT 0,1
+		where 1=1
+			and (@rownum:=0)=0
     </select>
 </mapper>

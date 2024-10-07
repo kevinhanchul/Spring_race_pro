@@ -17,39 +17,50 @@ table, tr, td, th{
 
 
 <script>
-    $(document).ready(function() {
-        $('#queryButton').click(function() {
-            var id = $('#id').val();
-            id=100;
-            var paramMap = {
-                user_name : $('#userName').val(),
-                user_id : $('#userId').val(),
-                user_pw : $('#userPw').val()
-			};
-            $.ajax({
-                url: '/sell/getSell',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(paramMap),
-                success: function(result) {
-                    var htmlcont="";
-                    htmlcont+="<tr>";
-                    htmlcont+="<td>"+ result.user_name + "</td>";
-                    htmlcont+="<td>"+ result.race_no + "</td>";
-                    htmlcont+="<td>"+ result.win_type + "</td>";
-                    htmlcont+="<td>"+ result.runner_no + "</td>";
-                    htmlcont+="<td>"+ result.bet_amt + "</td>";
-                    htmlcont+="<td>"+ result.win_rate + "</td>";
-                    htmlcont+="<td>"+ result.ret_amt + "</td>";
+$(document).ready(function() {
+    $('#queryButton').click(function() {
+        var id = $('#id').val();
+        id=100;
+        var paramMap = {
+            user_name : $('#userName').val(),
+            user_id : $('#userId').val(),
+            user_pw : $('#userPw').val()
+        };
+        $.ajax({
+            url: '/sell/getSell',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(paramMap),
+            success: function(result) {
+                var htmlcont="";
+                var i=0;
+                result.forEach(function(item) {
+                    console.log(item);
+                    console.log(i);
+                    htmlcont+="<tr key=i onClick='fn_abc(this)'>";
+                    htmlcont+="<td>"+ item.rownum + "</td>";
+                    htmlcont+="<td>"+ item.user_name + "</td>";
+                    htmlcont+="<td>"+ item.race_no + "</td>";
+                    htmlcont+="<td>"+ item.win_type + "</td>";
+                    htmlcont+="<td>"+ item.runner_no + "</td>";
+                    htmlcont+="<td>"+ item.bet_amt + "</td>";
+                    htmlcont+="<td>"+ item.win_rate + "</td>";
+                    htmlcont+="<td>"+ item.ret_amt + "</td>";
                     htmlcont+="</tr>";
-                    $('#result_val').html(htmlcont);
-                },
-                error: function() {
-                    $('#result_val').text('Error retrieving data');
-                }
-            });
+                    i++;
+                });
+                $('#result_val').html(htmlcont);
+            },
+            error: function() {
+                $('#result_val').text('Error retrieving data');
+            }
         });
     });
+});
+function fn_abc(obj){
+    var key_val = $(obj).attr("key");
+    console.log(key_val);
+}
 </script>
 
 <body>
@@ -59,11 +70,13 @@ table, tr, td, th{
 아이디
 <input type="text" id="userId">
 <input type="text" id="id" placeholder="Enter ID">
-<input type="button" value="조회하기" id="queryButton">
+<input type="button" value="조회하기" id="queryButton"><br>
+<input type="button" value="변경하기" id="modButton">
 <p>Result: <span id="result"></span></p>
 <table>
     <thead>
         <tr>
+            <td>순번</td>
             <td>고객명</td>
             <td>경주번호</td>
             <td>승식</td>

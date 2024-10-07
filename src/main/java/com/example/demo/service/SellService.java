@@ -4,6 +4,7 @@ import com.example.demo.mapper.SellMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -15,7 +16,7 @@ public class SellService {
         this.sellMapper = sellMapper;
     }
 
-    public Map<String, Object> getSell(Map<String, Object> paramMap) {
+    public List<Map<String, Object>> getSell(Map<String, Object> paramMap) {
         System.out.println(paramMap);
     	return sellMapper.selSell(paramMap);
     }
