@@ -29,6 +29,7 @@ public class SellController {
 
     @PostMapping("/sell/getSell")
     public Map<String, Object> getSell(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println(paramMap);
         return sellService.getSell(paramMap);
     }    
 }

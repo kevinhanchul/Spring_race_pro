@@ -21,10 +21,16 @@ table, tr, td, th{
         $('#queryButton').click(function() {
             var id = $('#id').val();
             id=100;
+            var paramMap = {
+                user_name : $('#userName').val(),
+                user_id : $('#userId').val(),
+                user_pw : $('#userPw').val()
+			};
             $.ajax({
                 url: '/sell/getSell',
-                type: 'GET',
-                data: { id: id },
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(paramMap),
                 success: function(result) {
                     var htmlcont="";
                     htmlcont+="<tr>";

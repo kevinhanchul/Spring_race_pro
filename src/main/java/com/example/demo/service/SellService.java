@@ -16,6 +16,7 @@ public class SellService {
     }
 
     public Map<String, Object> getSell(Map<String, Object> paramMap) {
+        System.out.println(paramMap);
     	return sellMapper.selSell(paramMap);
     }
 }
