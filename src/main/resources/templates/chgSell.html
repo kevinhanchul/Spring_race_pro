@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Query</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+table, tr, td, th{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+
+
+
+<script>
+
+function fn_abc(){
+    var id = $('#id').val();
+    id=100;
+    var paramMap = {
+        user_name : $('#userName').val(),
+        user_id : $('#userId').val(),
+        user_pw : $('#userPw').val()
+    };
+    $.ajax({
+        url: '/chgSell/getchgSell',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(paramMap),
+        success: function(result) {
+            var htmlcont="";
+            var i=0;
+            alert("변경하였습니다.");
+        },
+        error: function() {
+            alert('Error retrieving data');
+        }
+    });
+}
+</script>
+
+<body>
+<h4>Sell</h4>
+이름
+<input type="text" id="userName">
+아이디
+<input type="text" id="userId">
+<input type="text" id="id" placeholder="Enter ID"><br>
+<input type="button" value="변경하기" id="modButton">
+<p>Result: <span id="result"></span></p>
+고객명 <input type="text">
+</body>
+</html>

@@ -37,7 +37,7 @@ $(document).ready(function() {
                 result.forEach(function(item) {
                     console.log(item);
                     console.log(i);
-                    htmlcont+="<tr key=i onClick='fn_abc(this)'>";
+                    htmlcont+="<tr key='" + i + "' onClick='fn_abc(this)'>";
                     htmlcont+="<td>"+ item.rownum + "</td>";
                     htmlcont+="<td>"+ item.user_name + "</td>";
                     htmlcont+="<td>"+ item.race_no + "</td>";
@@ -60,6 +60,7 @@ $(document).ready(function() {
 function fn_abc(obj){
     var key_val = $(obj).attr("key");
     console.log(key_val);
+
 }
 </script>
 
