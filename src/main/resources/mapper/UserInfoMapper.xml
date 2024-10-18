@@ -6,6 +6,7 @@
 <mapper namespace="com.example.demo.mapper.UserInfoMapper">
     <select id="selUserInfo" parameterType="map" resultType="map">
         select
+			@rownum:=@rownum+1 as rownum,
 			user_name,
 			user_id,
 			user_pw,
@@ -24,5 +25,6 @@
 			<if test="user_email3 != null and user_email3 != ''">
 				or user_email like '%'||#{user_email3}||'%'
 			</if>
+			and (@rownum:=0)=0
     </select>
 </mapper>

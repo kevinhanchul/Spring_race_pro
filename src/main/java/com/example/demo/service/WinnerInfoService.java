@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.mapper.WinnerInfoMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -14,7 +15,7 @@ public class WinnerInfoService {
         this.winnerInfoMapper = winnerInfoMapper;
     }
 
-    public Map<String, Object> getWinnerInfo(Map<String, Object> paramMap) {
+    public List<Map<String, Object>> getWinnerInfo(Map<String, Object> paramMap) {
 
 //    	Map<String, Object> winner_result = winnerInfoMapper.selWinnerInfo(id);
         //Map<String, Object> resultMap = new HashMap<>();

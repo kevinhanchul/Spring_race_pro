@@ -4,6 +4,8 @@ import com.example.demo.service.WinnerInfoService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -25,7 +27,7 @@ public class WinnerInfoController {
     }
 
     @PostMapping("/winnerInfo/getWinnerInfo")
-    public Map<String, Object> getWinnerInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
+    public List<Map<String, Object>> getWinnerInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
         return winnerInfoService.getWinnerInfo(paramMap);
     }    
 }

@@ -15,6 +15,7 @@ public class WinnerInsertService {
     }
 
     public void getWinnerInsert(Map<String, Object> paramMap) {
-    	winnerInsertMapper.selWinnerInsert(paramMap);
+    	System.out.println(paramMap);
+        winnerInsertMapper.selWinnerInsert(paramMap);
     }
 }

@@ -47,6 +47,7 @@ table, tr, td, th{
                 	var htmlcont="";
                 	result.forEach(function(item) {
 						htmlcont+="<tr>";
+						htmlcont+="<td>"+ item.rownum + "</td>";
 						htmlcont+="<td>"+ item.user_name + "</td>";
 						htmlcont+="<td>"+ item.user_id + "</td>";
 						htmlcont+="<td>"+ item.user_pw + "</td>";

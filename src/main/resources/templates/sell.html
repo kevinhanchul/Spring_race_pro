@@ -14,8 +14,6 @@ table, tr, td, th{
 }
 </style>
 
-
-
 <script>
 $(document).ready(function() {
     $('#queryButton').click(function() {
@@ -37,7 +35,7 @@ $(document).ready(function() {
                 result.forEach(function(item) {
                     console.log(item);
                     console.log(i);
-                    htmlcont+="<tr key='" + i + "' onClick='fn_abc(this)'>";
+                    htmlcont+="<tr selYn='' key='" + i + "' onClick='fn_abc(this)'>";
                     htmlcont+="<td>"+ item.rownum + "</td>";
                     htmlcont+="<td>"+ item.user_name + "</td>";
                     htmlcont+="<td>"+ item.race_no + "</td>";
@@ -58,9 +56,41 @@ $(document).ready(function() {
     });
 });
 function fn_abc(obj){
+    //이거해야 함
+    //$(obj).parent("table").css("background-color","white");
+    $(obj).parent().css("background-color", "green");
+    var pId=$(obj).parent().attr("id");
+    console.log("pId : "+pId);
+    var sel_yn =  $(obj).attr("selYn");
+    console.log(sel_yn);
+    if ((sel_yn=="N") || (sel_yn=="")){
+        $(obj).attr("selYn", "Y");
+        $(obj).css("background-color","yellow")
+    } else{
+        $(obj).attr("selYn", "N");
+        $(obj).css("background-color","white")
+    }
     var key_val = $(obj).attr("key");
     console.log(key_val);
-
+    sel_yn =  $(obj).attr("selYn");
+    var paramMap = {
+        user_name : $(obj).children("td").eq(1).text(),
+        race_no : $(obj).children("td").eq(2).text(),
+        win_type : $(obj).children("td").eq(3).text()
+    };
+    console.log(paramMap);
+    $.ajax({
+        url: '/chgSell/getChgSell',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(paramMap),
+        success: function(result) {
+            alert("입력되었습니다.");
+        },
+        error: function() {
+            alert('Error retrieving data');
+        }
+    });
 }
 </script>
 

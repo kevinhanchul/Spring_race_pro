@@ -13,6 +13,5 @@
 			win_rate,
 			ret_amt
 		from t_winner_info
-		LIMIT 0,1
     </select>
 </mapper>

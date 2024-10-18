@@ -5,7 +5,9 @@
 
 <mapper namespace="com.example.demo.mapper.WinnerInsertMapper">
     <insert id="selWinnerInsert" parameterType="map">
-    	insert into t_user_info (user_name, user_id, user_pw, user_email)
-    	values ('100','2','3','4')
+        insert into t_winner_info (user_name, race_no, win_type,
+                    race_amt, win_rate, ret_amt)
+            values (#{user_name}, #{race_no}, #{win_type},
+                    #{race_amt}, #{win_rate}, #{race_amt}*#{win_rate})
     </insert>
 </mapper>

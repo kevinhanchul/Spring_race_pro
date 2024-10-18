@@ -26,6 +26,7 @@ public class WinnerInsertController {
 
     @PostMapping("/winnerInsert/getWinnerInsert")
     public void getWinnerInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println(paramMap);
         winnerInsertService.getWinnerInsert(paramMap);
     }    
 }

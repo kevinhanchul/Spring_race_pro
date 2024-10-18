@@ -20,11 +20,12 @@ table, tr, td, th{
                 user_name : $('#userName').val(),
                 race_no : $('#raceNo').val(),
                 win_type : $('#winType').val(),
-                runner_no : $('#runnerNo').val(),
-                bet_amt : $('#betAmt').val()
+                race_amt : $('#raceAmt').val(),
+                win_rate : $('#winRate').val(),
+                ret_amt : $('#retAmt').val()
             };
             $.ajax({
-                url: '/winnerInsert/getUserInsert',
+                url: '/winnerInsert/getWinnerInsert',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(paramMap),
@@ -44,27 +45,27 @@ table, tr, td, th{
 <table>
 <tr>
     <td>고객명</td>
-    <td><input type="text" id="userName"><br></td>
+    <td><input type="text" id="userName" value="고길동"><br></td>
     </tr>
 <tr>
     <td>경주번호</td>
-    <td><input type="text" id="raceNo"><br></td>
+    <td><input type="text" id="raceNo" value="123"><br></td>
     </tr>
 <tr>
     <td>승식</td>
-    <td><input type="text" id="winType"><br></td>
+    <td><input type="text" id="winType" value="삼쌍승"><br></td>
     </tr>
 <tr>
     <td>배팅금액</td>
-    <td><input type="text" id="raceAmt"><br></td>
+    <td><input type="text" id="raceAmt" value="1000"><br></td>
     </tr>
 <tr>
     <td>배당</td>
-    <td><input type="text" id="winRate"><br></td>
+    <td><input type="text" id="winRate" value="10.5"><br></td>
 </tr>
 <tr>
     <td>환불금액</td>
-    <td><input type="text" id="retAmt"><br></td>
+    <td><input type="text" id="retAmt" value="1"><br></td>
 </tr>
 </table>    
 
