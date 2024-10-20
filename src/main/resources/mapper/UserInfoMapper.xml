@@ -26,5 +26,6 @@
 				or user_email like '%'||#{user_email3}||'%'
 			</if>
 			and (@rownum:=0)=0
+			LIMIT 10 OFFSET #{pageNo}
     </select>
 </mapper>

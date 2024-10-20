@@ -17,5 +17,6 @@
 		from t_sell
 		where 1=1
 			and (@rownum:=0)=0
+			LIMIT 10 OFFSET 0
     </select>
 </mapper>
