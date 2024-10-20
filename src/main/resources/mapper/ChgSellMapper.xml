@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.ChgSellMapper">
+    <update id="selChgSell" parameterType="map">
+		update t_sell
+			set race_no=#{race_no},
+				win_type=#{win_type},
+				ret_amt=123
+			where user_name=#{user_name}
+    </update>
+</mapper>

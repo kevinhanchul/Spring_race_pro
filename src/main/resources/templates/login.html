@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Query</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+table, tr, td, th{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+</style>
+
+<script>
+$(document).ready(function() {
+    $('#queryButton').click(function() {
+        var id = $('#id').val();
+        id=100;
+        var paramMap = {
+            user_name : $('#userName').val(),
+            user_id : $('#userId').val(),
+            user_pw : $('#userPw').val()
+        };
+        $.ajax({
+            url: '/sell/getSell',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(paramMap),
+            success: function(result) {
+                var htmlcont="";
+                var i=0;
+                result.forEach(function(item) {
+                    console.log(item);
+                    console.log(i);
+                    htmlcont+="<tr selYn='' key='" + i + "' onClick='fn_abc(this)'>";
+                    htmlcont+="<td>"+ item.rownum + "</td>";
+                    htmlcont+="<td>"+ item.user_name + "</td>";
+                    htmlcont+="<td>"+ item.race_no + "</td>";
+                    htmlcont+="<td>"+ item.win_type + "</td>";
+                    htmlcont+="<td>"+ item.runner_no + "</td>";
+                    htmlcont+="<td>"+ item.bet_amt + "</td>";
+                    htmlcont+="<td>"+ item.win_rate + "</td>";
+                    htmlcont+="<td>"+ item.ret_amt + "</td>";
+                    htmlcont+="</tr>";
+                    i++;
+                });
+                //$('#result_val').html(htmlcont);
+            },
+            error: function() {
+                //$('#result_val').text('Error retrieving data');
+            }
+        });
+    });
+});
+function fn_abc(obj){
+    //이거해야 함
+    //$(obj).parent("table").css("background-color","white");
+    $(obj).parent().css("background-color", "green");
+    var pId=$(obj).parent().attr("id");
+    console.log("pId : "+pId);
+    var sel_yn =  $(obj).attr("selYn");
+    console.log(sel_yn);
+    if ((sel_yn=="N") || (sel_yn=="")){
+        $(obj).attr("selYn", "Y");
+        $(obj).css("background-color","yellow")
+    } else{
+        $(obj).attr("selYn", "N");
+        $(obj).css("background-color","white")
+    }
+    var key_val = $(obj).attr("key");
+    console.log(key_val);
+    sel_yn =  $(obj).attr("selYn");
+    var paramMap = {
+        user_name : $(obj).children("td").eq(1).text(),
+        race_no : $(obj).children("td").eq(2).text(),
+        win_type : $(obj).children("td").eq(3).text()
+    };
+    console.log(paramMap);
+    $.ajax({
+        url: '/chgSell/getChgSell',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(paramMap),
+        success: function(result) {
+            alert("입력되었습니다.");
+        },
+        error: function() {
+            alert('Error retrieving data');
+        }
+    });
+}
+</script>
+
+<body>
+<h4>로그인</h4>
+이름
+<input type="text" id="userName">
+아이디
+<input type="text" id="userId">
+<input type="text" id="id" placeholder="Enter ID">
+<input type="button" value="조회하기" id="queryButton"><br>
+<input type="button" value="변경하기" id="modButton">
+<p>Result: <span id="result"></span></p>
+아이디
+패스워드
+</body>
+</html>
