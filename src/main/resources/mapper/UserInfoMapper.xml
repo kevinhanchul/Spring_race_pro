@@ -5,6 +5,10 @@
 
 <mapper namespace="com.example.demo.mapper.UserInfoMapper">
     <select id="selUserInfo" parameterType="map" resultType="map">
+		<!-- 넣을 수 있는 방법을 생각
+		SELECT MAX(rownum) AS max_rownum, temp.*
+		FROM (
+-->
         select
 			@rownum:=@rownum+1 as rownum,
 			user_name,
@@ -27,5 +31,7 @@
 			</if>
 			and (@rownum:=0)=0
 			LIMIT 10 OFFSET #{pageNo}
+
+		<!--) AS temp-->
     </select>
 </mapper>

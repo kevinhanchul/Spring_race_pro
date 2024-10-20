@@ -29,7 +29,7 @@ public class LoginController {
 
     @PostMapping("/login/getLogin")
     public void getLogin(@RequestBody Map<String, Object> paramMap) throws Exception {
-        System.out.println("getLogin : "+paramMap);
+        System.out.println("getLogin : " + paramMap);
         loginService.getLogin(paramMap);
     }    
 }

@@ -4,11 +4,14 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.LoginMapper">
-    <update id="selLogin" parameterType="map">
-		update t_sell
-			set race_no=#{race_no},
-				win_type=#{win_type},
-				ret_amt=123
-			where user_name=#{user_name}
-    </update>
+    <select id="selLogin" parameterType="map" resultType="map">
+		select
+			user_name
+		from
+			t_user_info
+		where 1=1
+			and user_id=#{user_id}
+		<!--and user_pw=#{user_pw}-->
+		<!--sql로그 확인하는 방법-->
+    </select>
 </mapper>
