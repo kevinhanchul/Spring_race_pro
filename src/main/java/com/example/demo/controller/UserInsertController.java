@@ -43,4 +43,10 @@ public class UserInsertController {
         System.out.println(paramMap);
         userInsertService.modUserAgree(paramMap);
     }
+
+    @PostMapping("/userInsert/insertUserAccCard")
+    public void insertUserAccCard(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println("insertUserAccCard : "+paramMap);
+        userInsertService.insertUserAccCard(paramMap);
+    }
 }
