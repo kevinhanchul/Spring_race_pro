@@ -14,28 +14,28 @@ table, tr, td, th{
 }
 </style>
 <script>
-    $(document).ready(function() {
-        $('#queryButton').click(function() {
-            var paramMap = {
-                user_name : $('#userName').val(),
-                in_amt : $('#inAmt').val(),
-                out_amt : $('#outAmt').val(),
-                rem_amt : $('#remAmt').val()
-			};
-            $.ajax({
-                url: '/fepInfo/getFepInfo',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(paramMap),
-                success: function(result) {
-                	alert('입력되었습니다.');
-                },
-                error: function() {
-                    alert('Error retrieving data');
-                }
-            });
-        });
-    });
+$(document).ready(function() {
+	$('#queryButton').click(function() {
+		var paramMap = {
+			user_name : $('#userName').val(),
+			in_amt : $('#inAmt').val(),
+			out_amt : $('#outAmt').val(),
+			rem_amt : $('#remAmt').val()
+		};
+		$.ajax({
+			url: '/fepInfo/getFepInfo',
+			type: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify(paramMap),
+			success: function(result) {
+				alert('입력되었습니다.');
+			},
+			error: function() {
+				alert('Error retrieving data');
+			}
+		});
+	});
+});
 </script>
 
 <body>

@@ -12,4 +12,6 @@ public interface UserInsertMapper {
 
 	void modUserAgree(Map<String, Object> paramMap);
 
+	void insertUserAccCard(Map<String, Object> paramMap);
+
 }

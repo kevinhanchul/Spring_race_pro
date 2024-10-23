@@ -26,4 +26,10 @@ public class UserInsertService {
 
         userInsertMapper.modUserAgree(paramMap);
     }
+
+    public void insertUserAccCard(Map<String, Object> paramMap) {
+        System.out.println(paramMap);
+
+        userInsertMapper.insertUserAccCard(paramMap);
+    }
 }

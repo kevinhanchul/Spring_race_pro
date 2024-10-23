@@ -16,6 +16,7 @@ table, tr, td, th{
 <script>
 $(function(){
     $("#divAg").hide();
+    $("#divAcc").hide();
 });
 $(document).ready(function() {
     $('#queryButton').click(function() {
@@ -56,6 +57,30 @@ function fn_abc1(){
         data: JSON.stringify(paramMap),
         success: function(result) {
             alert('동의 되었습니다.');
+            $("#divAcc").show();
+        },
+        error: function() {
+            alert('Error retrieving data');
+        }
+    });
+}
+
+function fn_abc2(){
+    var paramMap = {
+        userName : $('#userName2').val(),
+        accNo : $('#accNo').val(),
+        cardNo : $('#cardNo').val(),
+        holdYn : $('#holdYn').val(),
+        <!--오늘 날짜 가져오기-->
+        regDt : $('#regDt').val()
+    };
+    $.ajax({
+        url: '/userInsert/insertUserAccCard',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(paramMap),
+        success: function(result) {
+            alert('계좌카드생성 되었습니다.');
         },
         error: function() {
             alert('Error retrieving data');
@@ -91,6 +116,16 @@ function fn_abc1(){
     마켓팅동의(OK)<input type="radio" class="clAgree" value="OK"><br>
     마켓팅동의(NO)<input type="radio" class="clAgree" value="NO"><br>
     <input type="button" value="동의하기" id="queryButton1" onclick="fn_abc1()"><br>
+</div>
+
+<div id="divAcc">
+    fep계좌및카드생성하기<br>
+    <input type="text" id="userName2" value="한철"><br>
+    <input type="text" id="accNo" value="1234"><br>
+    <input type="text" id="cardNo" value="5678"><br>
+    <input type="text" id="holdYn" value="N"><br>
+    <input type="text" id="regDt" value="2024.10.23"><br>
+    <input type="button" value="계좌및카드생성하기" id="queryButton2" onclick="fn_abc2()"><br>
 </div>
 
 </body>

@@ -21,4 +21,12 @@
             and user_name = #{userName}
     </update>
 
+    <insert id="insertUserAccCard" parameterType="map">
+        insert into
+            t_acc_card
+            (user_name, acc_no, card_no, hold_yn, reg_dy)
+        values
+            (#{userName}, #{accNo}, #{cardNo}, #{holdYn}, #{regDt})
+    </insert>
+
 </mapper>
