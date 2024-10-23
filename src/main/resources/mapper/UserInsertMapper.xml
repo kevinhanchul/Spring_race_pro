@@ -9,6 +9,16 @@
             T_USER_INFO
             (USER_NAME, USER_ID, USER_PW, USER_EMAIL)
     	values
-            (#{USER_NAME},#{USER_ID},#{USER_PW},#{USER_EMAIL})
+            (#{userName},#{userId},#{userPw},#{userEmail})
     </insert>
+
+    <update id="modUserAgree" parameterType="map">
+        update
+            T_USER_INFO
+        set
+            agree_yn=#{agreeYn}
+        where 1=1
+            and user_name = #{userName}
+    </update>
+
 </mapper>

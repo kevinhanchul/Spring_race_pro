@@ -17,9 +17,11 @@ CREATE TABLE t_user_info (
     user_name  varchar(50), /*이름*/
     user_id  varchar(50), /*아이디*/
     user_pw  varchar(50),  /*패스워드*/
-    user_email  varchar(50)  /*이메일주소*/
+    user_email  varchar(50),  /*이메일주소*/
+    agree_yn varchar(50)  /*이메일주소*/
 );
 
+alter table t_user_info add agree_yn varchar(50);
 -- 선수정보 runner_info
 CREATE TABLE t_runner_info (
     runner_name varchar(50), /*이름*/

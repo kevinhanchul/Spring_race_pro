@@ -11,7 +11,10 @@
 </style>
 
 <script>
-function fn_abc(obj){
+$(function(){
+    $("#divAg").hide();
+});
+function fn_abc(){
     var paramMap = {
         user_id : $("#userId").val(),
         user_pw : $("#userPw").val()
@@ -31,6 +34,28 @@ function fn_abc(obj){
         }
     });
 }
+
+function fn_abc1(){
+    var paramMap = {
+        user_id : $("#userId").val(),
+        user_pw : $("#userPw").val()
+    };
+    console.log(paramMap);
+    $.ajax({
+        url: '/getTotal/releaseFocus',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(paramMap),
+        success: function(result) {
+            console.log(result);
+            alert("건전화체크 되었습니다.");
+        },
+        error: function() {
+            alert('Error retrieving data');
+        }
+    });
+    fn_abc();
+}
 </script>
 
 <body>
@@ -38,6 +63,10 @@ function fn_abc(obj){
 아이디 : <input type="text" id="userId" value="org.pbs.Fix San"><br>
 패스워드 : <input type="text" id="userPw" value="zO9%@mgxUqNO"><br>
 <input type="button" value="로그인" id="queryButton1" onclick="fn_abc()"><br>
-<input type="button" value="건전화기간체크" id="queryButton1" onclick="fn_abc1()"><br>
+<input type="button" value="건전화기간체크" id="queryButton2" onclick="fn_abc1()"><br>
+<div id="divAg">
+마켓팅동의(OK)<input type="radio" value="OK"><br>
+마켓팅동의(NO)<input type="radio" value="NO"><br>
+</div>
 </body>
 </html>

@@ -36,5 +36,11 @@ public class UserInsertController {
     public void getUserInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
         System.out.println(paramMap);
         userInsertService.getUserInsert(paramMap);
-    }    
+    }
+
+    @PostMapping("/userInsert/modUserAgree")
+    public void modUserAgree(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println(paramMap);
+        userInsertService.modUserAgree(paramMap);
+    }
 }

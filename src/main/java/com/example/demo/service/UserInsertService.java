@@ -20,4 +20,10 @@ public class UserInsertService {
 
         userInsertMapper.selUserInsert(paramMap);
     }
+
+    public void modUserAgree(Map<String, Object> paramMap) {
+        System.out.println(paramMap);
+
+        userInsertMapper.modUserAgree(paramMap);
+    }
 }

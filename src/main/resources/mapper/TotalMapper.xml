@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.TotalMapper">
+    <select id="releaseFocus" parameterType="map" resultType="map">
+		select
+			count(*) cnt
+		from
+			t_health
+		where 1=1
+			and user_name=#{user_name}
+			and date_format(sysdate(), '%Y%m%d') >= limit_st_dy
+			and date_format(sysdate(), '%Y%m%d') <![CDATA[<=]]> limit_ed_dy
+    </select>
+</mapper>
