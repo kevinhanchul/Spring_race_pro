@@ -7,7 +7,6 @@ CREATE TABLE numbers (
     number INT NOT NULL
 );
 
-
 CREATE TABLE t_user_info123 (
     user_name  varchar(50) /*이름*/
 );
@@ -20,8 +19,18 @@ CREATE TABLE t_user_info (
     user_email  varchar(50),  /*이메일주소*/
     agree_yn varchar(50)  /*이메일주소*/
 );
-
 alter table t_user_info add agree_yn varchar(50);
+
+--계좌 및 카드 생성
+CREATE TABLE t_acc_card (
+    user_name  varchar(50), /*이름*/
+    acc_no  varchar(50),    /*아이디*/
+    card_no  varchar(50),   /*패스워드*/
+    hold_yn  varchar(50),   /*입력/변경 홀드*/
+    reg_dt varchar(50)      /*입력일*/
+);
+alter table t_acc_card add hold_yn varchar(50);
+userName, accNo, cardNo, holdYn, regDt
 -- 선수정보 runner_info
 CREATE TABLE t_runner_info (
     runner_name varchar(50), /*이름*/
@@ -32,13 +41,12 @@ CREATE TABLE t_runner_info (
     runner_win_rate float/*승률*/
 );
 
-
 -- 경주정보 race_info
 CREATE TABLE t_race_info (
     runner_name varchar(50), /*선수명*/
-    race_dy varchar(50), /*일자*/
-    race_cnt int, /*회차*/
-    meet_no varchar(50) /*시행처*/
+    race_dy varchar(50),    /*일자*/
+    race_cnt int,           /*회차*/
+    meet_no varchar(50)     /*시행처*/
 );
 
 -- 승자정보 winner_info

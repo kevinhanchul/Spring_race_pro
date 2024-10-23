@@ -28,5 +28,4 @@
         values
             (#{userName}, #{accNo}, #{cardNo}, #{holdYn}, #{regDt})
     </insert>
-
 </mapper>
