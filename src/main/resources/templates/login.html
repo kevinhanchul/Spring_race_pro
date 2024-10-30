@@ -54,8 +54,57 @@ function fn_abc1(){
             alert('Error retrieving data');
         }
     });
-    fn_abc();
+    //로그인하기
+    //fn_abc();
 }
+
+function fn_abc3(){
+    var paramMap = {
+        user_id : $("#userId").val()
+    };
+    console.log(paramMap);
+    $.ajax({
+        url: '/getTotal/noticePopup',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(paramMap),
+        success: function(result) {
+            console.log(result);
+            alert("팝업 띄어졌습니다.");
+            if(result.cnt>0){
+                window.open();
+            }
+        },
+        error: function() {
+            alert('Error retrieving data');
+        }
+    });
+}
+
+function fn_abc4(){
+    var paramMap = {
+        card_no : '111',
+        card_seq : '1'
+    };
+    console.log(paramMap);
+    $.ajax({
+        url: '/getTotal/noticePopupLimit',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(paramMap),
+        success: function(result) {
+            console.log(result);
+            alert("대상자에게만 팝업이 띄어졌습니다.");
+            if(result.cnt>0){
+                window.open();
+            }
+        },
+        error: function() {
+            alert('Error retrieving data');
+        }
+    });
+}
+
 </script>
 
 <body>
@@ -64,9 +113,13 @@ function fn_abc1(){
 패스워드 : <input type="text" id="userPw" value="zO9%@mgxUqNO"><br>
 <input type="button" value="로그인" id="queryButton1" onclick="fn_abc()"><br>
 <input type="button" value="건전화기간체크" id="queryButton2" onclick="fn_abc1()"><br>
+<input type="button" value="동의하기" id="queryButton3" onclick="fn_abc2()"><br>
+<input type="button" value="팝업띄우기" id="queryButton4" onclick="fn_abc3()"><br>
+<input type="button" value="대상자만팝업띄우기" id="queryButton5" onclick="fn_abc4()"><br>
 <div id="divAg">
 마켓팅동의(OK)<input type="radio" value="OK"><br>
 마켓팅동의(NO)<input type="radio" value="NO"><br>
 </div>
 </body>
+
 </html>

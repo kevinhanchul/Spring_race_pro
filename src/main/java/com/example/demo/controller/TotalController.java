@@ -24,5 +24,17 @@ public class TotalController {
     public Map<String, Object> releaseFocus(@RequestBody Map<String, Object> paramMap) throws Exception {
         System.out.println("releaseFocus : "+paramMap);
         return totalService.releaseFocus(paramMap);
-    }    
+    }
+
+    @PostMapping("/getTotal/noticePopup")
+    public Map<String, Object> noticePopup(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println("noticePopup : "+paramMap);
+        return totalService.noticePopup(paramMap);
+    }
+
+    @PostMapping("/getTotal/noticePopupLimit")
+    public Map<String, Object> noticePopupLimit(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println("noticePopupLimit : "+paramMap);
+        return totalService.noticePopupLimit(paramMap);
+    }
 }

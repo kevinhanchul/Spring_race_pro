@@ -156,3 +156,22 @@ CREATE TABLE t_fep_info(
 );
 
 insert into t_fep_info values ('홍길동', 200, 100, 100);
+
+-- 팝업알림하기 t_popup_noti
+CREATE TABLE t_notice_popup(
+    popup_no varchar(50), /*팝업번호*/
+    st_dy varchar(50), /*시작일자*/
+    ed_dy varchar(50), /*종료일자*/
+    img_nm varchar(50) /*이미지이름*/
+);
+
+insert into t_notice_popup values ('1','20241001','20241231','');
+
+-- 팝업알림통제 t_notice_popup_limit
+CREATE TABLE t_notice_popup_limit(
+    popup_no varchar(50), /*팝업번호*/
+    card_no varchar(50), /*카드번호*/
+    card_seq varchar(50) /*카드순번*/
+);
+
+insert into t_notice_popup_limit values ('1','111','1');

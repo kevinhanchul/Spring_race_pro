@@ -18,4 +18,14 @@ public class TotalService {
         System.out.println("releaseFocus : " + paramMap);
     	return totalMapper.releaseFocus(paramMap);
     }
+
+    public Map<String, Object> noticePopup(Map<String, Object> paramMap) {
+        System.out.println("noticePopup : " + paramMap);
+        return totalMapper.noticePopup(paramMap);
+    }
+
+    public Map<String, Object> noticePopupLimit(Map<String, Object> paramMap) {
+        System.out.println("noticePopupLimit : " + paramMap);
+        return totalMapper.noticePopupLimit(paramMap);
+    }
 }
