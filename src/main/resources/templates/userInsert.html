@@ -17,9 +17,11 @@ table, tr, td, th{
 $(function(){
     $("#divAg").hide();
     $("#divAcc").hide();
+    $("#userInsert").attr("disabled", true);
 });
+
 $(document).ready(function() {
-    $('#queryButton').click(function() {
+    $('#userInsert').click(function() {
         var paramMap = {
             userName : $('#userName').val(),
             userId : $('#userId').val(),
@@ -50,6 +52,7 @@ function fn_abc1(){
         userEmail : $('#userEmail').val(),
         agreeYn : $('input[class=clAgree]:checked').val()
     };
+
     $.ajax({
         url: '/userInsert/modUserAgree',
         type: 'POST',
@@ -87,6 +90,35 @@ function fn_abc2(){
         }
     });
 }
+
+function fn_dulc(){
+    alert("중복체크");
+    var paramMap = {
+        userId : $('#userId').val()
+    };
+    $.ajax({
+        url: '/userInsert/userIdChk',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(paramMap),
+        success: function(result) {
+            console.log(result);
+            if(result.cnt > 0){
+                alert('사용아이디가 있습니다.');
+                $("#userInsert").attr("disabled", true);
+            }
+            else {
+                alert('사용가능합니다.');
+                $("#userInsert").attr("disabled", false);
+            }
+
+        },
+        error: function() {
+            alert('Error retrieving data');
+        }
+    });
+    $("#userInsert").attr("disabled", false);
+}
 </script>
 
 <body>
@@ -98,7 +130,9 @@ function fn_abc2(){
 </tr>
 <tr>
 <td>아이디</td>
-<td><input type="text" id="userId" value="hch"><br></td>
+<td><input type="text" id="userId" value="hch">
+    <input type="button" onclick="fn_dulc()" value="중복체크">
+</td>
 </tr>
 <tr>
 <td>패스워드</td>
@@ -110,7 +144,7 @@ function fn_abc2(){
 </tr>
 </table>    
 
-<input type="button" value="입력하기" id="queryButton"><br>
+<input type="button" value="입력하기" id="userInsert"><br>
 
 <div id="divAg">
     마켓팅동의(OK)<input type="radio" class="clAgree" value="OK"><br>

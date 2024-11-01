@@ -49,4 +49,10 @@ public class UserInsertController {
         System.out.println("insertUserAccCard : "+paramMap);
         userInsertService.insertUserAccCard(paramMap);
     }
+
+    @PostMapping("/userInsert/userIdChk")
+    public Map<String, Object> userIdChk(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println("userIdChk : "+paramMap);
+        return userInsertService.userIdChk(paramMap);
+    }
 }

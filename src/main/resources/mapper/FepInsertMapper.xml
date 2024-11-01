@@ -5,7 +5,9 @@
 
 <mapper namespace="com.example.demo.mapper.FepInsertMapper">
     <insert id="selFepInsert" parameterType="map">
-		insert into t_fep_info (user_name, in_amt, out_amt, rem_amt)
-		values (#{user_name}, #{in_amt}, #{out_amt}, #{rem_amt})
+		insert into t_fep_info
+            (user_name, in_amt, out_amt, rem_amt)
+		values
+            (#{user_name}, #{in_amt}, #{out_amt}, #{rem_amt})
     </insert>
 </mapper>

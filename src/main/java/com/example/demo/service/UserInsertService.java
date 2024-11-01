@@ -4,6 +4,7 @@ import com.example.demo.mapper.UserInsertMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -31,5 +32,11 @@ public class UserInsertService {
         System.out.println(paramMap);
 
         userInsertMapper.insertUserAccCard(paramMap);
+    }
+
+    public Map<String, Object> userIdChk(Map<String, Object> paramMap) {
+        System.out.println(paramMap);
+
+        return userInsertMapper.userIdChk(paramMap);
     }
 }
