@@ -24,4 +24,25 @@
 			(#{user_name}, #{race_no}, #{win_type}, #{runner_no}, #{bet_amt},
 			#{win_rate}, #{ret_amt})
     </insert>
+
+	<select id="initSellInsert" parameterType="map" resultType="map">
+		select
+			@rownum:=@rownum+1 as rownum,
+			user_name, race_no, win_type,
+			runner_no, bet_amt
+		from
+			t_sell
+		where 1 = 1
+			and user_name=#{user_name}
+			and (@rownum:=0)=0
+			LIMIT 1
+	</select>
+
+	<select id="initSellName" resultType="map">
+		select
+			user_name
+		from
+			t_sell
+		where 1 = 1
+	</select>
 </mapper>

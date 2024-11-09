@@ -9,4 +9,6 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface RunnerInfoMapper {
 	List<Map<String, Object>> selRunnerInfo(Map<String, Object> paramMap);
+
+	List<Map<String, Object>> runnerBaseInfo(Map<String, Object> paramMap);
 }

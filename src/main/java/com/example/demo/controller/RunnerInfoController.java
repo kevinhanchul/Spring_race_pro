@@ -28,6 +28,12 @@ public class RunnerInfoController {
         return mav;
     }
 
+    @PostMapping("/runnerInfo/runnerBaseInfo")
+    public List<Map<String, Object>> runnerBaseInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println(paramMap);
+        return runnerInfoService.runnerBaseInfo(paramMap);
+    }
+
     @PostMapping("/runnerInfo/getRunnerInfo")
     public List<Map<String, Object>> getRunnerInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
         System.out.println(paramMap);

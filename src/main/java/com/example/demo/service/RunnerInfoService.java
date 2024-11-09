@@ -19,4 +19,8 @@ public class RunnerInfoService {
     public List<Map<String, Object>> getRunnerInfo(Map<String, Object> paramMap) {
     	return runnerInfoMapper.selRunnerInfo(paramMap);
     }
+
+    public List<Map<String, Object>> runnerBaseInfo(Map<String, Object> paramMap) {
+        return runnerInfoMapper.runnerBaseInfo(paramMap);
+    }
 }

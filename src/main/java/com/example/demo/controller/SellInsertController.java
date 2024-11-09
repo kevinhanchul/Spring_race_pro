@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -29,5 +31,16 @@ public class SellInsertController {
     public void getSellInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
         System.out.println(paramMap);
         sellInsertService.getSellInsert(paramMap);
-    }    
+    }
+
+    @PostMapping("/sellInsert/initSellInsert")
+    public Map<String, Object> initSellInsert(@RequestBody Map<String, Object> paramMap) throws Exception {
+        System.out.println(paramMap);
+        return sellInsertService.initSellInsert(paramMap);
+    }
+
+    @PostMapping("/sellInsert/initSellName")
+    public List<Map<String, Object>> initSellName() throws Exception {
+        return sellInsertService.initSellName();
+    }
 }

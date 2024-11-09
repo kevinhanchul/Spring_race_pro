@@ -12,36 +12,99 @@
 
 
 <script>
-    $(document).ready(function() {
-        $('#queryButton').click(function() {
-            var paramMap = {
-                user_name : $('#userName').val(),
-                race_no : $('#raceNo').val(),
-                win_type : $('#winType').val(),
-                runner_no : $('#runnerNo').val(),
-                bet_amt : $('#betAmt').val()
-            };
-            $.ajax({
-                url: '/sellInsert/getSellInsert',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(paramMap),
-                success: function(result) {
-                    alert('입력되었습니다.');
-                },
-                error: function() {
-                    alert('Error retrieving data');
-                }
-            });
+$(document).ready(function() {
+    $('#queryButton').click(function() {
+        var paramMap = {
+            user_name : $('#userName').val(),
+            race_no : $('#raceNo').val(),
+            win_type : $('#winType').val(),
+            runner_no : $('#runnerNo').val(),
+            bet_amt : $('#betAmt').val()
+        };
+        $.ajax({
+            url: '/sellInsert/getSellInsert',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(paramMap),
+            success: function(result) {
+                alert('입력되었습니다.');
+            },
+            error: function() {
+                alert('Error retrieving data');
+            }
         });
     });
+});
+
+function fn_abc(){
+    $("#betAmt").val("50000");
+}
+
+function fn_abc1(){
+    $("#betAmt").val("100000");
+}
+
+function fn_init_data(){
+    var paramMap = {
+        user_name : $('#userName').val(),
+        race_no : $('#raceNo').val(),
+        win_type : $('#winType').val(),
+        runner_no : $('#runnerNo').val(),
+        bet_amt : $('#betAmt').val()
+    };
+    $.ajax({
+        url: '/sellInsert/initSellInsert',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(paramMap),
+        success: function(result) {
+            alert('조회되었습니다.');
+            $('#userName').val(result.user_name);
+            $('#raceNo').val(result.race_no);
+            $('#winType').val(result.win_type);
+            $('#runnerNo').val(result.runner_no);
+            $('#betAmt').val(result.bet_amt);
+        },
+        error: function() {
+            alert('Error retrieving data');
+        }
+    });
+}
+
+function fn_name(){
+    $.ajax({
+        url: '/sellInsert/initSellName',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(),
+        success: function(result) {
+            var htmlcont="";
+            result.forEach(function(item) {
+                console.log('조회되었습니다.');
+                htmlcont+="<option value='"+item.user_name+"'>"+item.user_name+"</option>";
+            });
+            $('#userName').html(htmlcont);
+        },
+        error: function() {
+            alert('Error retrieving data');
+        }
+    });
+}
+
 </script>
 
 
 <table>
     <tr>
         <td>고객명</td>
-        <td><input type="text" id="userName" value="홍길동"></td>
+        <td>
+            <!--<input type="text" id="userName" value="홍길동">-->
+            <select id="userName">
+                <option value="전체">전체</option>
+                <option value="홍길동">홍길동</option>
+            </select>
+        </td>
+
     </tr>
     <tr>
         <td>경주번호</td>
@@ -61,7 +124,11 @@
     </tr>
 </table>
 
-<input type="button" value="입력하기" id="queryButton">
+<input type="button" value="입력하기" id="queryButton"><br>
+<input type="button" value="5만원" id="queryButton1" onclick="fn_abc()"><br>
+<input type="button" value="10만원" id="queryButton2" onclick="fn_abc1()"><br>
+<input type="button" value="초기화면" id="queryButton3" onclick="fn_init_data()"><br>
+<input type="button" value="이름조회하기" id="queryButton4" onclick="fn_name()">
 
 </body>
 </html>

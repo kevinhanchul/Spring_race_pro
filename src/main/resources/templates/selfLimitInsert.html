@@ -11,33 +11,34 @@
 table, tr, td, th{
 	border: 1px solid black;
 	border-collapse: collapse;
+	font-size:13px;
 }
 </style>
 <script>
-    $(document).ready(function() {
-        $('#queryButton').click(function() {
-            //var id = $('#id').val();
-            var paramMap = {
-                user_name : $('#userName').val()
-			};
-            $.ajax({
-                url: '/selfLimit/getSelfLimit',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(paramMap),
-                success: function(result) {
-                	var htmlcont="";
-                	result.forEach(function(item) {
-	                	alert('입력되었습니다');
-                	});
-                    	alert('Error retrieving data');
-                },
-                error: function() {
-                    $('#result_val').html('<tr><td colspan="6">No data found</td></tr>');
-                }
-            });
-        });
-    });
+$(document).ready(function() {
+	$('#queryButton').click(function() {
+		//var id = $('#id').val();
+		var paramMap = {
+			user_name : $('#userName').val()
+		};
+		$.ajax({
+			url: '/selfLimit/getSelfLimit',
+			type: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify(paramMap),
+			success: function(result) {
+				var htmlcont="";
+				result.forEach(function(item) {
+					alert('입력되었습니다');
+				});
+					alert('Error retrieving data');
+			},
+			error: function() {
+				$('#result_val').html('<tr><td colspan="6">No data found</td></tr>');
+			}
+		});
+	});
+});
 </script>
 <body>
 <form id="addForm">

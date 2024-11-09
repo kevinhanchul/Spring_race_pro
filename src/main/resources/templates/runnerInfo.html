@@ -15,37 +15,62 @@ table, tr, td, th{
 </style>
 
 <script>
-    $(document).ready(function() {
-        $('#queryButton').click(function() {
-            var paramMap = {
-                runner_name : $('#runnerName').val(),
-                runner_age : $('#runnerAge').val()
-			};
-            $.ajax({
-                url: '/runnerInfo/getRunnerInfo',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify(paramMap),
-                success: function(result) {
-                    var htmlcont="";
-                	result.forEach(function(item) {
-	                	htmlcont+="<tr>";
-	               		htmlcont+="<td>"+ item.runner_name + "</td>";
-	           			htmlcont+="<td>"+ item.runner_age + "</td>";
-	       				htmlcont+="<td>"+ item.runner_group + "</td>";
-	   					htmlcont+="<td>"+ item.runner_weight + "</td>";
-	   					htmlcont+="<td>"+ item.runner_hight + "</td>";
-	   					htmlcont+="<td>"+ item.runner_win_rate + "</td>";
-	   					htmlcont+="</tr>";
-                	});
-                    $('#result_val').html(htmlcont);
-                },
-                error: function() {
-                    $('#result_val').html('<tr><td colspan="6">No data found</td></tr>');
-                }
+$(function(){
+    var paramMap = {
+
+    };
+    $.ajax({
+        url: '/runnerInfo/runnerBaseInfo',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(paramMap),
+        success: function(result) {
+            var htmlcont="";
+            result.forEach(function(item) {
+                htmlcont+="<option value='전체'>전체</option>";
+                htmlcont+="<option value="+ item.runner_group + ">"+ item.runner_group + "</option>";
+
             });
+            $('#runnerGroup').html(htmlcont);
+        },
+        error: function() {
+            $('#runnerGroup').html('No data found');
+        }
+    });
+});
+
+$(document).ready(function() {
+    $('#queryButton').click(function() {
+        var paramMap = {
+            runner_name : $('#runnerName').val(),
+            runner_age : $('#runnerAge').val()
+        };
+        $.ajax({
+            url: '/runnerInfo/getRunnerInfo',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(paramMap),
+            success: function(result) {
+                var htmlcont="";
+                result.forEach(function(item) {
+                    htmlcont+="<tr>";
+                    htmlcont+="<td>"+ item.runner_name + "</td>";
+                    htmlcont+="<td>"+ item.runner_age + "</td>";
+                    htmlcont+="<td>"+ item.runner_group + "</td>";
+                    htmlcont+="<td>"+ item.runner_weight + "</td>";
+                    htmlcont+="<td>"+ item.runner_hight + "</td>";
+                    htmlcont+="<td>"+ item.runner_win_rate + "</td>";
+                    htmlcont+="</tr>";
+                });
+                $('#result_val').html(htmlcont);
+            },
+            error: function() {
+                $('#result_val').html('<tr><td colspan="6">No data found</td></tr>');
+            }
         });
     });
+});
+
 </script>
 
 <body>
@@ -57,6 +82,10 @@ table, tr, td, th{
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
+</select>
+소속
+<select id="runnerGroup">
+
 </select>
 <input type="text" id="id" placeholder="Enter ID">
 <input type="button" value="조회하기" id="queryButton">
