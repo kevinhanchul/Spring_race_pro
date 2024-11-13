@@ -29,8 +29,8 @@ table, tr, td, th{
                     var htmlcont="";
                     htmlcont+="<tr>";
                     htmlcont+="<td>"+ result.user_name + "</td>";
-                    htmlcont+="<td>"+ result.check_res + "</td>";
-                    htmlcont+="<td>"+ result.check_score + "</td>";
+                    htmlcont+="<td>"+ result.limit_st_dy + "</td>";
+                    htmlcont+="<td>"+ result.limit_ed_dy + "</td>";
                     htmlcont+="<td>"+ result.input_dy + "</td>";
                     htmlcont+="</tr>";
                     $('#result').html(htmlcont);
@@ -60,9 +60,9 @@ table, tr, td, th{
 <table>
     <tr>
         <td>고객명</td>
-        <td>진단결과</td>
-        <td>점수</td>
-        <td>진단일자</td>
+        <td>건전화시작일자</td>
+        <td>건전화종료일자</td>
+        <td>입력일자</td>
     </tr>
     <tbody id="result"></tbody>
 </table>

@@ -7,11 +7,11 @@
     <select id="selSelfCheck" parameterType="map" resultType="map">
 		select
 			user_name,
-			check_res,
-			check_score,
+			limit_st_dy,
+			limit_ed_dy,
 			input_dy
-		from t_self_check
+		from t_health
 		where user_name = ${userInfo}
-		LIMIT 0,1
+<!--		LIMIT 0,1  mysql에서 개수 제한-->
     </select>
 </mapper>

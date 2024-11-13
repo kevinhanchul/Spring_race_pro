@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -26,7 +27,7 @@ public class HealthInfoController {
     }
 
     @PostMapping("/healthInfo/getHealthInfo")
-    public Map<String, Object> getHealthInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
+    public List<Map<String, Object>> getHealthInfo(@RequestBody Map<String, Object> paramMap) throws Exception {
         return healthInfoService.getHealthInfo(paramMap);
     }    
 }

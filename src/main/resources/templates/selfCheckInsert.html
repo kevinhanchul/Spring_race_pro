@@ -21,7 +21,8 @@ table, tr, td, th{
                 user_name : $('#userName').val(),
                 check_res : $('#checkRes').val(),
                 check_score : $('#checkScore').val(),
-                input_dy : $('#inputEy').val()
+                limit_st_dy : $('#limitStDy').val(),
+                limit_ed_dy : $('#limitEdDy').val()
 			};
 			console.log(paramMap);
             $.ajax({
@@ -42,23 +43,19 @@ table, tr, td, th{
 </script>
 
 <body>
-<h4>진단정보입력</h4>
+<h4>건전화기간정보입력</h4>
 <table>
     <tr>
         <td>고객명</td>
         <td><input type="text" id="userName" value="홍길동"><br></td>
     </tr>
     <tr>
-        <td>진단결과</td>
-        <td><input type="text" id="checkRes" value="나쁨"><br></td>
+        <td>건전화시작일자</td>
+        <td><input type="text" id="limitStDy" value="20240930"><br></td>
     </tr>
     <tr>
-        <td>점수</td>
-        <td><input type="text" id="checkScore" value="85"><br></td>
-    </tr>
-    <tr>
-        <td>진단일자</td>
-        <td><input type="text" id="inputEy" value="20240930"><br></td>
+        <td>건전화종료일자</td>
+        <td><input type="text" id="limitEdDy" value="20241230"><br></td>
     </tr>
 </table>
 

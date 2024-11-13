@@ -4,6 +4,7 @@ import com.example.demo.mapper.HealthInfoMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -15,7 +16,7 @@ public class HealthInfoService {
         this.healthInfoMapper = healthInfoMapper;
     }
 
-    public Map<String, Object> getHealthInfo(Map<String, Object> paramMap) {
+    public List<Map<String, Object>> getHealthInfo(Map<String, Object> paramMap) {
         return healthInfoMapper.selHealthInfo(paramMap);
     }
 }
